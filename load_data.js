@@ -1,3 +1,11 @@
+/* Helper function for creating point objects
+ * 
+ * Each point has fields x & y hodling coordinates
+ */
+function point(x, y) {
+	return {x: x, y: y};
+}
+
 // Stores all created nodes, indexed by their unique 2-letter keys
 var nodes = {};
 
