@@ -6,6 +6,10 @@ function point(x, y) {
 	return {x: x, y: y};
 }
 
+// Position of top-left node
+var TOP_LEFT = point(50, 50);
+var WIDTH = 100;
+
 // Stores all created nodes, indexed by their unique 2-letter keys
 var nodes = {};
 
