@@ -1,6 +1,6 @@
 // List of ASOIAF characters and their IDs
 var asoiaf_chars = [
-					["Cercei Lannister", "cl"],
+					["Cersei Lannister", "cl"],
 					["Sansa Stark", "ss"]
 					];
 
