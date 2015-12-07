@@ -20,18 +20,6 @@ var svg = d3.select("svg");
 svg.attr("width", WIDTH)
 	.attr("height", HEIGHT);
 
-// Will hold the ID of the currently selected character
-var selected_ID = null;
-
-// Hide all edges incident to currently selected vertex
-function deselect() {
-	if(selected_ID !== null) {
-		svg.selectAll("[data-l=" + selected_ID + "], [data-r=" + selected_ID + "]")
-			.attr("visibility", "hidden");
-	    selected_ID = null;
-	}
-}
-
 //////////// Draw the vertices
 
 // TAC vertices
@@ -78,7 +66,12 @@ asoiaf_vertex.on("click", vertexClicked);
 
 // Callback for when a vertex is clicked
 function vertexClicked(char_ID, i) {
-	deselect();
+
+	// Hide all edges first
+	svg.selectAll("line")
+		.attr("visibility", "hidden");
+
+	// Show edges incident to the clicked vertex
 	svg.selectAll("[data-l=" + char_ID + "], [data-r=" + char_ID + "]")
 		.attr("visibility", "visible");
 	selected_ID = char_ID;
