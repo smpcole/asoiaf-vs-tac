@@ -57,6 +57,8 @@ tac_vertex.append("text")
 	.attr("text-anchor", "end")
 	.attr("x", LABEL_WIDTH)
 	.attr("y", VTX_RAD);
+
+tac_vertex.on("click", vertexClicked);
 	
 // ASOIAF vertices
 var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
@@ -71,6 +73,16 @@ asoiaf_vertex.append("circle")
 	.attr("cx", 0)
 	.attr("cy", 0)
 	.attr("r", VTX_RAD);
+
+asoiaf_vertex.on("click", vertexClicked);
+
+// Callback for when a vertex is clicked
+function vertexClicked(char_ID, i) {
+	deselect();
+	svg.selectAll("[data-l=" + char_ID + "], [data-r=" + char_ID + "]")
+		.attr("visibility", "visible");
+	selected_ID = char_ID;
+}
 
 // Labels
 asoiaf_vertex.append("text")
