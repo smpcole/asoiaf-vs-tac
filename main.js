@@ -24,8 +24,11 @@ var tac_vertex = svg.selectAll("dummy")
 	.data(tac_chars)
   .enter().append("g")
 	.attr("transform", function(d, i) {
-			// Vertical position of the vertex's center
-			return "translate(0," + (VTX_RAD + MARGIN.top + i * VTX_DIST) + ")";
+
+			// Store each vertex's vertical position
+			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
+			// Translate to vertical position of the vertex's center
+			return "translate(0," + char_dict[d].y + ")";
 		});
 
 tac_vertex.append("circle")
@@ -45,7 +48,8 @@ var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
 	.data(asoiaf_chars)
   .enter().append("g")
 	.attr("transform", function(d, i) {
-			return "translate(" + (LABEL_WIDTH + LABEL_OFFSET + GRAPH_WIDTH) + "," + (VTX_RAD + MARGIN.top + i * VTX_DIST) + ")";
+			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
+			return "translate(" + (LABEL_WIDTH + LABEL_OFFSET + GRAPH_WIDTH) + "," + char_dict[d].y + ")";
 		});
 
 asoiaf_vertex.append("circle")
