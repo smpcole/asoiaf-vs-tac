@@ -27,12 +27,12 @@ svg.attr("width", WIDTH)
 var tac_vertex = svg.selectAll("dummy")
 	.data(tac_chars)
   .enter().append("g")
-	.attr("transform", function(d, i) {
+	.attr("transform", function(char_ID, i) {
 
 			// Store each vertex's vertical position
-			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
+			char_dict[char_ID].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
 			// Translate to vertical position of the vertex's center
-			return "translate(" + MARGIN.left + "," + char_dict[d].y + ")";
+			return "translate(" + MARGIN.left + "," + char_dict[char_ID].y + ")";
 		});
 
 tac_vertex.append("circle")
@@ -51,9 +51,9 @@ tac_vertex.append("text")
 var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
 	.data(asoiaf_chars)
   .enter().append("g")
-	.attr("transform", function(d, i) {
-			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
-			return "translate(" + RIGHT_X + "," + char_dict[d].y + ")";
+	.attr("transform", function(char_ID, i) {
+			char_dict[char_ID].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
+			return "translate(" + RIGHT_X + "," + char_dict[char_ID].y + ")";
 		});
 
 asoiaf_vertex.append("circle")
@@ -63,7 +63,7 @@ asoiaf_vertex.append("circle")
 
 // Labels
 asoiaf_vertex.append("text")
-	.text(function(d) {return char_dict[d].name;})
+	.text(function(char_ID) {return char_dict[char_ID].name;})
 	.attr("text-anchor", "start")
 	.attr("x", LABEL_OFFSET)
 	.attr("y", VTX_RAD);
@@ -73,7 +73,7 @@ svg.selectAll("dummy")
 	.data(edges)
   .enter().append("line")
 	.attr("x1", LEFT_X)
-	.attr("y1", function(d) {return char_dict[d.l].y;})
+	.attr("y1", function(e) {return char_dict[e.l].y;})
 	.attr("x2", RIGHT_X)
-	.attr("y2", function(d) {return char_dict[d.r].y;})
+	.attr("y2", function(e) {return char_dict[e.r].y;})
 	.style({stroke: "black", "stroke-width": "2px"});
