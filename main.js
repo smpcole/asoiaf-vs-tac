@@ -67,3 +67,13 @@ asoiaf_vertex.append("text")
 	.attr("text-anchor", "start")
 	.attr("x", LABEL_OFFSET)
 	.attr("y", VTX_RAD);
+
+// Draw edges
+svg.selectAll("dummy")
+	.data(edges)
+  .enter().append("line")
+	.attr("x1", LEFT_X)
+	.attr("y1", function(d) {return char_dict[d.l].y;})
+	.attr("x2", RIGHT_X)
+	.attr("y2", function(d) {return char_dict[d.r].y;})
+	.style({stroke: "black", "stroke-width": "2px"});
