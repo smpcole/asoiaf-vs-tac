@@ -78,4 +78,5 @@ svg.selectAll("dummy")
 	.attr("y2", function(e) {return char_dict[e.r].y;})
 	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
 	.attr("data-r", function(e) {return e.r;})
+	.attr("visibility", "hidden")
 	.style({stroke: "black", "stroke-width": "2px"});
