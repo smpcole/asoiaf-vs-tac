@@ -13,8 +13,18 @@ var tac_chars = [
 
 ////////////////////////////////////
 
-// Parse the lits of characters into a more useful format
-var all_chars = {};
+/*
+ * Store useful information corresponding to each character.
+ *
+ * Each character has a 2-digit character ID; this ID is used as
+ * the character's index in char_dict
+ *
+ * Each index holds a "character" object with the following fields:
+ * - name: the character's full name
+ * - y: the vertical position of the center of the vertex corresponding to this character; for now
+ *   it is set to null & is filled in when the vertex is drawn
+ */
+var char_dict = {};
 
 var edges = [];
 
@@ -27,7 +37,7 @@ for(i = 0; i < asoiaf_chars.length; i++) {
 		name: full_name
 	};
 
-	all_chars[char_ID] = newChar;
+	char_dict[char_ID] = newChar;
 
 	// Delete everything but the character ID from the original list
 	asoiaf_chars[i] = char_ID;
@@ -48,7 +58,7 @@ for(i = 0; i < tac_chars.length; i++) {
 		edges.push({l: char_ID, r: nbr_ID});
 	}
 
-	all_chars[char_ID] = newChar;
+	char_dict[char_ID] = newChar;
 
 	// Delete everything but the character ID from the original list
 	tac_chars[i] = char_ID;

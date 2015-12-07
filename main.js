@@ -35,7 +35,7 @@ tac_vertex.append("circle")
 
 // Label each vertex with the character's full name
 tac_vertex.append("text")
-	.text(function(d) {return all_chars[d].name;})
+	.text(function(d) {return char_dict[d].name;})
 	.attr("text-anchor", "end")
 	.attr("x", LABEL_WIDTH)
 	.attr("y", VTX_RAD);
@@ -55,7 +55,7 @@ asoiaf_vertex.append("circle")
 
 // Labels
 asoiaf_vertex.append("text")
-	.text(function(d) {return all_chars[d].name;})
+	.text(function(d) {return char_dict[d].name;})
 	.attr("text-anchor", "start")
 	.attr("x", LABEL_OFFSET)
 	.attr("y", VTX_RAD);
