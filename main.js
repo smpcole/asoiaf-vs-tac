@@ -11,6 +11,10 @@ var WIDTH = GRAPH_WIDTH + 2 * (LABEL_WIDTH + LABEL_OFFSET);
 // Overall height of the graphics
 var HEIGHT = 2 * VTX_RAD + MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length));
 
+// x-coordinates of vertices in left and right parts of the graph
+var LEFT_X = MARGIN.left + LABEL_WIDTH + LABEL_OFFSET,
+	RIGHT_X = LEFT_X + GRAPH_WIDTH;
+
 var svg = d3.select("svg");
 
 svg.attr("width", WIDTH)
@@ -28,7 +32,7 @@ var tac_vertex = svg.selectAll("dummy")
 			// Store each vertex's vertical position
 			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
 			// Translate to vertical position of the vertex's center
-			return "translate(0," + char_dict[d].y + ")";
+			return "translate(" + MARGIN.left + "," + char_dict[d].y + ")";
 		});
 
 tac_vertex.append("circle")
@@ -49,7 +53,7 @@ var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
   .enter().append("g")
 	.attr("transform", function(d, i) {
 			char_dict[d].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
-			return "translate(" + (LABEL_WIDTH + LABEL_OFFSET + GRAPH_WIDTH) + "," + char_dict[d].y + ")";
+			return "translate(" + RIGHT_X + "," + char_dict[d].y + ")";
 		});
 
 asoiaf_vertex.append("circle")
