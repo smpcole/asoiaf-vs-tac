@@ -20,6 +20,17 @@ var svg = d3.select("svg");
 svg.attr("width", WIDTH)
 	.attr("height", HEIGHT);
 
+// Will hold the ID of the currently selected character
+var selected_ID = null;
+
+// Hide all edges incident to currently selected vertex
+function deselect() {
+	if(selected_ID !== null) {
+		svg.selectAll("[data-l=" + selected_ID + "], [data-r=" + selected_ID + "]")
+			.attr("visibility", "hidden");
+	    selected_ID = null;
+	}
+}
 
 //////////// Draw the vertices
 
