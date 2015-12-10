@@ -28,6 +28,7 @@ svg.attr("width", WIDTH)
 var tac_vertex = svg.selectAll("dummy")
 	.data(tac_chars)
   .enter().append("g")
+	.classed("vertex", true)
 	.attr("transform", function(char_ID, i) {
 
 			// Store each vertex's vertical position
@@ -54,6 +55,7 @@ tac_vertex.on("click", vertexClicked);
 var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
 	.data(asoiaf_chars)
   .enter().append("g")
+	.classed("vertex", true)
 	.attr("transform", function(char_ID, i) {
 			char_dict[char_ID].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
 			return "translate(" + RIGHT_X + "," + char_dict[char_ID].y + ")";
