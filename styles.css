@@ -1,5 +1,6 @@
-.blurb {
+.blurb div {
 	border-style: groove;
 	background-color: yellow;
-	overflow: scroll;
+	overflow: scroll; 
 }
+

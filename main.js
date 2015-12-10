@@ -123,7 +123,7 @@ function showBlurb(e, i) {
 		.attr("y", y)
 		.attr("width", BLURB_WIDTH)
 		.attr("height", BLURB_HEIGHT)
-	  .append("xhtml:body")
+	  .append("xhtml:div")
 		.html(blurbs[e.l][e.r]);
 
 }
