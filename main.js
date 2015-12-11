@@ -58,7 +58,6 @@ var edges = svg.selectAll(".edge") // Should be empty
 	.attr("y2", function(e) {return vertexPos(e.r).y;})
 	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
 	.attr("data-r", function(e) {return e.r;})
-	.attr("visibility", "hidden")
 	.classed("edge", true)
 	.on("mouseover", showBlurb);
 
@@ -84,14 +83,14 @@ function vertexClicked(v) {
 
 	// Hide all edges first
 	svg.selectAll(".edge")
-		.attr("visibility", "hidden");
+		.classed("active", false);
 
 	// Also hide any visible blurb
 	hideBlurb();
 
 	// Show edges incident to the clicked vertex
 	svg.selectAll("[data-l=" + v.id + "], [data-r=" + v.id + "]")
-		.attr("visibility", "visible");
+		.classed("active", true);
 }
 
 function hideBlurb() {

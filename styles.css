@@ -13,9 +13,15 @@
 }
 
 line.edge {
+	visibility: hidden;
 	stroke: blue;
 	stroke-width: 2px;
 }
+
+line.edge.active {
+	visibility: visible;
+}
+
 
 
 
