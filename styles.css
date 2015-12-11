@@ -27,6 +27,9 @@ line.edge.active {
 	pointer-events: auto;
 }
 
+line.edge.active.selected {
+	stroke-width: 4px;
+}
 
 
 

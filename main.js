@@ -92,7 +92,8 @@ function vertexClicked(v) {
 
 	// Show edges incident to the clicked vertex
 	edges.filter("[data-l=" + v.id + "], [data-r=" + v.id + "]")
-		.classed("active", true);
+		.classed("active", true)
+		.classed("selected", false);
 }
 
 function hideBlurb() {
@@ -105,6 +106,11 @@ function showBlurb(e, i) {
 	hideBlurb();
 	console.log("showBlurb");
 
+	// Deselect other edges and select this one
+	edges.classed("selected", function(f) {
+			return f.l == e.l && f.r == e.r;
+		});
+	
 	// Top left of rectangle
 	var x = (LEFT_X + RIGHT_X - BLURB_WIDTH) / 2,
 		y = (vertexPos(e.l).y + vertexPos(e.r).y - BLURB_HEIGHT) / 2;
