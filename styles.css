@@ -1,3 +1,7 @@
+* {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+
 .blurb div {
 	border-style: groove;
 	background-color: yellow;
