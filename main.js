@@ -82,14 +82,13 @@ function vertexPos(v) {
 function vertexClicked(v) {
 
 	// Hide all edges first
-	svg.selectAll(".edge")
-		.classed("active", false);
+	edges.classed("active", false);
 
 	// Also hide any visible blurb
 	hideBlurb();
 
 	// Show edges incident to the clicked vertex
-	svg.selectAll("[data-l=" + v.id + "], [data-r=" + v.id + "]")
+	edges.filter("[data-l=" + v.id + "], [data-r=" + v.id + "]")
 		.classed("active", true);
 }
 
