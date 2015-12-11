@@ -56,8 +56,6 @@ var edges = svg.selectAll(".edge") // Should be empty
 	.attr("y1", function(e) {return vertexPos(e.l).y;})
 	.attr("x2", RIGHT_X)
 	.attr("y2", function(e) {return vertexPos(e.r).y;})
-	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
-	.attr("data-r", function(e) {return e.r;})
 	.classed("edge", true)
 	.on("mouseover", showBlurb);
 
@@ -91,8 +89,9 @@ function vertexClicked(v) {
 	vertices.classed("selected", function(w) {return w.id == v.id;});
 
 	// Show edges incident to the clicked vertex
-	edges.filter("[data-l=" + v.id + "], [data-r=" + v.id + "]")
-		.classed("active", true)
+	edges.classed("active", function(e) {
+			return e.l == v.id || e.r == v.id;
+		})
 		.classed("selected", false);
 }
 
