@@ -17,13 +17,14 @@
 }
 
 line.edge {
-	visibility: hidden;
-	stroke: blue;
+	stroke: LightGray;
 	stroke-width: 2px;
+	pointer-events: none;
 }
 
 line.edge.active {
-	visibility: visible;
+	stroke: black;
+	pointer-events: auto;
 }
 
 
