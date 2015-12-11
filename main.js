@@ -87,6 +87,9 @@ function vertexClicked(v) {
 	// Also hide any visible blurb
 	hideBlurb();
 
+	// Select current vertex & deselect all others
+	vertices.classed("selected", function(w) {return w.id == v.id;});
+
 	// Show edges incident to the clicked vertex
 	edges.filter("[data-l=" + v.id + "], [data-r=" + v.id + "]")
 		.classed("active", true);

@@ -12,6 +12,10 @@
 	text-anchor: start;
 }
 
+.vertex.selected text {
+	font-weight: bold;
+}
+
 line.edge {
 	visibility: hidden;
 	stroke: blue;
