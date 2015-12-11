@@ -49,7 +49,7 @@ vertices.append("text")
 	.attr("y", VTX_RAD);
 
 // Draw edges
-var edges = svg.selectAll("dummy")
+var edges = svg.selectAll(".edge") // Should be empty
 	.data(edges)
   .enter().append("line")
 	.attr("x1", LEFT_X)
@@ -59,7 +59,7 @@ var edges = svg.selectAll("dummy")
 	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
 	.attr("data-r", function(e) {return e.r;})
 	.attr("visibility", "hidden")
-	.style({stroke: "black", "stroke-width": "2px"})
+	.classed("edge", true)
 	.on("mouseover", showBlurb);
 
 ////////////////// Helper functions //////////////////
@@ -83,7 +83,7 @@ function vertexPos(v) {
 function vertexClicked(v) {
 
 	// Hide all edges first
-	svg.selectAll("line")
+	svg.selectAll(".edge")
 		.attr("visibility", "hidden");
 
 	// Also hide any visible blurb

@@ -12,3 +12,10 @@
 	text-anchor: start;
 }
 
+line.edge {
+	stroke: blue;
+	stroke-width: 2px;
+}
+
+
+
