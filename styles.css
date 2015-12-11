@@ -4,3 +4,11 @@
 	overflow: scroll; 
 }
 
+.vertex.tac text {
+	text-anchor: end;
+}
+
+.vertex.asoiaf text {
+	text-anchor: start;
+}
+

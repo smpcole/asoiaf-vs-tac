@@ -22,54 +22,65 @@ var svg = d3.select("svg");
 svg.attr("width", WIDTH)
 	.attr("height", HEIGHT);
 
-//////////// Draw the vertices
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// TAC vertices
-var tac_vertex = svg.selectAll("dummy")
-	.data(tac_chars)
+// Draw vertices
+var vertices = svg.selectAll(".vertex") // Should be empty
+	.data(vertices)
   .enter().append("g")
 	.classed("vertex", true)
-	.attr("transform", function(char_ID, i) {
-
-			// Store each vertex's vertical position
-			char_dict[char_ID].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
-			// Translate to vertical position of the vertex's center
-			return "translate(" + MARGIN.left + "," + char_dict[char_ID].y + ")";
+	.classed("tac", function(v) {return v.series == "tac";})
+	.classed("asoiaf", function(v) {return v.series == "asoiaf";})
+	.on("click", vertexClicked)
+	.attr("id", function(v) {return v.id;})
+	.attr("transform", function(v) {
+			var pos = vertexPos(v);
+			return "translate(" + pos.x + "," + pos.y + ")";
 		});
-
-tac_vertex.append("circle")
-	.attr("cx", LABEL_WIDTH + LABEL_OFFSET)
-	.attr("cy", 0)
-	.attr("r", VTX_RAD);
-
-// Label each vertex with the character's full name
-tac_vertex.append("text")
-	.text(function(d) {return char_dict[d].name;})
-	.attr("text-anchor", "end")
-	.attr("x", LABEL_WIDTH)
-	.attr("y", VTX_RAD);
-
-tac_vertex.on("click", vertexClicked);
-	
-// ASOIAF vertices
-var asoiaf_vertex = svg.selectAll("dummy") // So that we get an empty selection
-	.data(asoiaf_chars)
-  .enter().append("g")
-	.classed("vertex", true)
-	.attr("transform", function(char_ID, i) {
-			char_dict[char_ID].y = VTX_RAD + MARGIN.top + i * VTX_DIST;
-			return "translate(" + RIGHT_X + "," + char_dict[char_ID].y + ")";
-		});
-
-asoiaf_vertex.append("circle")
+  
+vertices.append("circle")
 	.attr("cx", 0)
 	.attr("cy", 0)
 	.attr("r", VTX_RAD);
 
-asoiaf_vertex.on("click", vertexClicked);
+vertices.append("text")
+	.text(function(v) {return v.name;})
+	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
+	.attr("y", VTX_RAD);
+
+// Draw edges
+var edges = svg.selectAll("dummy")
+	.data(edges)
+  .enter().append("line")
+	.attr("x1", LEFT_X)
+	.attr("y1", function(e) {return vertexPos(e.l).y;})
+	.attr("x2", RIGHT_X)
+	.attr("y2", function(e) {return vertexPos(e.r).y;})
+	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
+	.attr("data-r", function(e) {return e.r;})
+	.attr("visibility", "hidden")
+	.style({stroke: "black", "stroke-width": "2px"})
+	.on("mouseover", showBlurb);
+
+////////////////// Helper functions //////////////////
+
+// Return absolute coordinates of center of vertex
+// Accepts either a vertex object or an ID string
+function vertexPos(v) {
+
+	// If v is an ID string, use it to retrieve vertex
+	if(v.name == undefined)
+		v = svg.select("#" + v).datum();
+
+	var pos = {
+		x: (v.series == "tac" ? LEFT_X : RIGHT_X), 
+		y: VTX_RAD + MARGIN.top + v.index * VTX_DIST
+	};
+	return pos;
+}
 
 // Callback for when a vertex is clicked
-function vertexClicked(char_ID, i) {
+function vertexClicked(v) {
 
 	// Hide all edges first
 	svg.selectAll("line")
@@ -79,31 +90,9 @@ function vertexClicked(char_ID, i) {
 	hideBlurb();
 
 	// Show edges incident to the clicked vertex
-	svg.selectAll("[data-l=" + char_ID + "], [data-r=" + char_ID + "]")
+	svg.selectAll("[data-l=" + v.id + "], [data-r=" + v.id + "]")
 		.attr("visibility", "visible");
-	selected_ID = char_ID;
 }
-
-// Labels
-asoiaf_vertex.append("text")
-	.text(function(char_ID) {return char_dict[char_ID].name;})
-	.attr("text-anchor", "start")
-	.attr("x", LABEL_OFFSET)
-	.attr("y", VTX_RAD);
-
-// Draw edges
-svg.selectAll("dummy")
-	.data(edges)
-  .enter().append("line")
-	.attr("x1", LEFT_X)
-	.attr("y1", function(e) {return char_dict[e.l].y;})
-	.attr("x2", RIGHT_X)
-	.attr("y2", function(e) {return char_dict[e.r].y;})
-	.attr("data-l", function(e) {return e.l;}) // Store char IDs of left and right endpoints so that we can easily select all edges with a given endpoint
-	.attr("data-r", function(e) {return e.r;})
-	.attr("visibility", "hidden")
-	.style({stroke: "black", "stroke-width": "2px"})
-	.on("mouseover", showBlurb);
 
 function hideBlurb() {
 	console.log("hideBlurb");
@@ -117,7 +106,7 @@ function showBlurb(e, i) {
 
 	// Top left of rectangle
 	var x = (LEFT_X + RIGHT_X - BLURB_WIDTH) / 2,
-		y = (char_dict[e.l].y + char_dict[e.r].y - BLURB_HEIGHT) / 2;
+		y = (vertexPos(e.l).y + vertexPos(e.r).y - BLURB_HEIGHT) / 2;
 
 	svg.append("foreignObject")
 		.classed("blurb", true)
@@ -129,4 +118,3 @@ function showBlurb(e, i) {
 		.html(blurbs[e.l][e.r]);
 
 }
-
