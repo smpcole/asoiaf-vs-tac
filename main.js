@@ -114,6 +114,10 @@ function showBlurb(e, i) {
 	var x = (LEFT_X + RIGHT_X - BLURB_WIDTH) / 2,
 		y = (vertexPos(e.l).y + vertexPos(e.r).y - BLURB_HEIGHT) / 2;
 
+	var blurb = blurbs[e.l][e.r];
+	if(blurbs == undefined)
+		blurbs = "TODO: write something to go here";
+
 	svg.append("foreignObject")
 		.classed("blurb", true)
 		.attr("x", x)
@@ -121,6 +125,6 @@ function showBlurb(e, i) {
 		.attr("width", BLURB_WIDTH)
 		.attr("height", BLURB_HEIGHT)
 	  .append("xhtml:div")
-		.html(blurbs[e.l][e.r]);
+		.html(blurb);
 
 }
