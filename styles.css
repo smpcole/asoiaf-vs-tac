@@ -21,13 +21,14 @@
 }
 
 line.edge {
-	stroke: LightGray;
+	stroke: black;
+	opacity: .25;
 	stroke-width: 2px;
 	pointer-events: none;
 }
 
 line.edge.active {
-	stroke: black;
+	opacity: 1;
 	pointer-events: auto;
 }
 
