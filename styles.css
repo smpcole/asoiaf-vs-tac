@@ -8,6 +8,10 @@
 	overflow: scroll; 
 }
 
+.vertex * {
+	cursor: pointer;
+}
+
 .vertex.tac text {
 	text-anchor: end;
 }
