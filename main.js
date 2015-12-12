@@ -17,15 +17,15 @@ var HEIGHT = 2 * VTX_RAD + MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac
 var LEFT_X = MARGIN.left + LABEL_WIDTH + LABEL_OFFSET,
 	RIGHT_X = LEFT_X + GRAPH_WIDTH;
 
-var svg = d3.select("svg");
+var canvas = d3.select("#canvas");
 
-svg.attr("width", WIDTH)
+canvas.attr("width", WIDTH)
 	.attr("height", HEIGHT);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Draw vertices
-var vertices = svg.selectAll(".vertex") // Should be empty
+var vertices = canvas.selectAll(".vertex") // Should be empty
 	.data(vertices)
   .enter().append("g")
 	.classed("vertex", true)
@@ -49,7 +49,7 @@ vertices.append("text")
 	.attr("y", VTX_RAD);
 
 // Draw edges
-var edges = svg.selectAll(".edge") // Should be empty
+var edges = canvas.selectAll(".edge") // Should be empty
 	.data(edges)
   .enter().append("line")
 	.attr("x1", LEFT_X)
@@ -67,7 +67,7 @@ function vertexPos(v) {
 
 	// If v is an ID string, use it to retrieve vertex
 	if(v.name == undefined)
-		v = svg.select("#" + v).datum();
+		v = canvas.select("#" + v).datum();
 
 	var pos = {
 		x: (v.series == "tac" ? LEFT_X : RIGHT_X), 
@@ -97,7 +97,7 @@ function vertexClicked(v) {
 
 function hideBlurb() {
 	console.log("hideBlurb");
-	svg.selectAll(".blurb")
+	canvas.selectAll(".blurb")
 		.remove();
 }
 
@@ -118,7 +118,7 @@ function showBlurb(e, i) {
 	if(blurbs == undefined)
 		blurbs = "TODO: write something to go here";
 
-	svg.append("foreignObject")
+	canvas.append("foreignObject")
 		.classed("blurb", true)
 		.attr("x", x)
 		.attr("y", y)
