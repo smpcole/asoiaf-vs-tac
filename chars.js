@@ -1,13 +1,13 @@
 // List of ASOIAF characters and their IDs
 var asoiaf_chars = [
-					["Cersei Lannister", "cl"],
-					["Sansa Stark", "ss"]
+					["Cersei Lannister", "cersei"],
+					["Sansa Stark", "sansa"]
 					];
 
 // List of TAC characters, their IDs, and their neighbors' IDs
 var tac_chars = [
-				 ["Clemence of Hungary", "ch", "ss"],
-				 ["Marguerite of Burgundy", "mb", "ss", "cl"]
+				 ["Clemence of Hungary", "clemence", "sansa"],
+				 ["Marguerite of Burgundy", "marguerite", "sansa", "cersei"]
 				 ];
 
 
