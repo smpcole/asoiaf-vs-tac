@@ -8,6 +8,14 @@
 	float: left;
 }
 
+i {
+    font-family: inherit;
+}
+
+h1, h2 {
+	font-family: 'MedievalSharp', cursive;
+}
+
 .blurb div {
 	border-style: groove;
 	background-color: yellow;
