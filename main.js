@@ -11,7 +11,7 @@ var LABEL_WIDTH = 200,
 var WIDTH = GRAPH_WIDTH + 2 * (LABEL_WIDTH + LABEL_OFFSET);
 
 // Overall height of the graphics
-var HEIGHT = 2 * VTX_RAD + MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length));
+var HEIGHT = MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length));
 
 // x-coordinates of vertices in left and right parts of the graph
 var LEFT_X = MARGIN.left + LABEL_WIDTH + LABEL_OFFSET,
@@ -71,7 +71,7 @@ function vertexPos(v) {
 
 	var pos = {
 		x: (v.series == "tac" ? LEFT_X : RIGHT_X), 
-		y: VTX_RAD + MARGIN.top + v.index * VTX_DIST
+		y: MARGIN.top + v.index * VTX_DIST
 	};
 	return pos;
 }
