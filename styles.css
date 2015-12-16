@@ -12,7 +12,8 @@
 
 #side-panel img {
 	width: 100px;
-	margin: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 i {
