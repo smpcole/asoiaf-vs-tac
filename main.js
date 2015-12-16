@@ -2,9 +2,7 @@ var LABEL_WIDTH = 200,
 	GRAPH_WIDTH = 400, // Horizontal distance between centers of vertices on opposite sides
 	VTX_DIST = 40, // Distance between centers of two consecutive vertices
 	LABEL_OFFSET = 10, // Distance between label and center of vertex
-	BLURB_WIDTH = 150,
-	BLURB_HEIGHT = 100,
-	MARGIN = {top: BLURB_HEIGHT / 2, bottom: BLURB_HEIGHT / 2, left: 0, right: 0};
+	MARGIN = {top: 75, bottom: 75, left: 0, right: 0};
 
 // Overall width of the graphics
 var WIDTH = GRAPH_WIDTH + 2 * (LABEL_WIDTH + LABEL_OFFSET);
@@ -55,8 +53,7 @@ var edges = canvas.selectAll(".edge") // Should be empty
 	.attr("y1", function(e) {return vertexPos(e.l).y;})
 	.attr("x2", RIGHT_X)
 	.attr("y2", function(e) {return vertexPos(e.r).y;})
-	.classed("edge", true)
-	.on("mouseover", showBlurb);
+	.classed("edge", true);
 
 ////////////////// Helper functions //////////////////
 
@@ -81,9 +78,6 @@ function vertexClicked(v) {
 	// Hide all edges first
 	edges.classed("active", false);
 
-	// Also hide any visible blurb
-	hideBlurb();
-
 	// Select current vertex & deselect all others
 	vertices.classed("selected", function(w) {return w.id == v.id;});
 
@@ -100,38 +94,4 @@ function vertexClicked(v) {
 		.style("float", "left");
 	sidePanel.append("h2")
 		.html(v.name);
-}
-
-function hideBlurb() {
-	console.log("hideBlurb");
-	canvas.selectAll(".blurb")
-		.remove();
-}
-
-function showBlurb(e, i) {
-	hideBlurb();
-	console.log("showBlurb");
-
-	// Deselect other edges and select this one
-	edges.classed("selected", function(f) {
-			return f.l == e.l && f.r == e.r;
-		});
-	
-	// Top left of rectangle
-	var x = (LEFT_X + RIGHT_X - BLURB_WIDTH) / 2,
-		y = (vertexPos(e.l).y + vertexPos(e.r).y - BLURB_HEIGHT) / 2;
-
-	var blurb = blurbs[e.l][e.r];
-	if(blurbs == undefined)
-		blurbs = "TODO: write something to go here";
-
-	canvas.append("foreignObject")
-		.classed("blurb", true)
-		.attr("x", x)
-		.attr("y", y)
-		.attr("width", BLURB_WIDTH)
-		.attr("height", BLURB_HEIGHT)
-	  .append("xhtml:div")
-		.html(blurb);
-
 }

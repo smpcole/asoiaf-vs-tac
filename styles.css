@@ -22,12 +22,6 @@ h1, h2 {
 	font-family: 'MedievalSharp', cursive;
 }
 
-.blurb div {
-	border-style: groove;
-	background-color: yellow;
-	overflow: scroll; 
-}
-
 .vertex circle {
     cx: 0;
 	cy: 0;
@@ -65,6 +59,3 @@ line.edge.active {
 line.edge.active.selected {
 	stroke-width: 4px;
 }
-
-
-
