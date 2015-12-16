@@ -1,6 +1,5 @@
 var LABEL_WIDTH = 200,
 	GRAPH_WIDTH = 400, // Horizontal distance between centers of vertices on opposite sides
-	VTX_RAD = 4,
 	VTX_DIST = 40, // Distance between centers of two consecutive vertices
 	LABEL_OFFSET = 10, // Distance between label and center of vertex
 	BLURB_WIDTH = 150,
@@ -38,15 +37,12 @@ var vertices = canvas.selectAll(".vertex") // Should be empty
 			return "translate(" + pos.x + "," + pos.y + ")";
 		});
   
-vertices.append("circle")
-	.attr("cx", 0)
-	.attr("cy", 0)
-	.attr("r", VTX_RAD);
+vertices.append("circle");
 
 vertices.append("text")
 	.text(function(v) {return v.name;})
 	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
-	.attr("y", VTX_RAD);
+	.attr("y", 4);
 
 // Draw edges
 var edges = canvas.selectAll(".edge") // Should be empty

@@ -22,6 +22,12 @@ h1, h2 {
 	overflow: scroll; 
 }
 
+.vertex circle {
+    cx: 0;
+	cy: 0;
+	r: 4;
+}
+
 .vertex * {
 	cursor: pointer;
 }
