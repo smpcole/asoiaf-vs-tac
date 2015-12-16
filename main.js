@@ -8,7 +8,7 @@ var LABEL_WIDTH = 200,
 var WIDTH = GRAPH_WIDTH + 2 * (LABEL_WIDTH + LABEL_OFFSET);
 
 // Overall height of the graphics
-var HEIGHT = MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length));
+var HEIGHT = MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length) - 1);
 
 // x-coordinates of vertices in left and right parts of the graph
 var LEFT_X = MARGIN.left + LABEL_WIDTH + LABEL_OFFSET,
