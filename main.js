@@ -88,10 +88,13 @@ function vertexClicked(v) {
 		.classed("selected", false);
 
 	// Clear the side panel
-	sidePanel.html("")
-	  .append("img")
+	sidePanel.select("#instructions").remove();
+	sidePanel.selectAll("div").html("");
+
+	var charInfo = sidePanel.select("#selected-char");
+	charInfo.append("img")
 		.attr("src", "pics/" + v.id + ".jpg")
 		.style("float", "left");
-	sidePanel.append("h2")
+	charInfo.append("h2")
 		.html(v.name);
 }
