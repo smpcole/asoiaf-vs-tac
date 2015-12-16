@@ -16,6 +16,14 @@
 	padding-right: 10px;
 }
 
+#selected-char img {
+    float: left;
+}
+
+#connected-char img {
+    float: right;
+}
+
 i {
     font-family: inherit;
 }

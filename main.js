@@ -93,8 +93,7 @@ function vertexClicked(v) {
 
 	var charInfo = sidePanel.select("#selected-char");
 	charInfo.append("img")
-		.attr("src", "pics/" + v.id + ".jpg")
-		.style("float", "left");
+		.attr("src", "pics/" + v.id + ".jpg");
 	charInfo.append("h2")
 		.html(v.name);
 }
