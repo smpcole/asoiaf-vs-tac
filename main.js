@@ -92,6 +92,14 @@ function vertexClicked(v) {
 			return e.l == v.id || e.r == v.id;
 		})
 		.classed("selected", false);
+
+	// Clear the side panel
+	sidePanel.html("")
+	  .append("img")
+		.attr("src", "pics/" + v.id + ".jpg")
+		.style("float", "left");
+	sidePanel.append("h2")
+		.html(v.name);
 }
 
 function hideBlurb() {

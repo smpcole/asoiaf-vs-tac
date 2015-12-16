@@ -9,6 +9,11 @@
 	overflow-y: scroll;
 }
 
+#side-panel img {
+	width: 100px;
+	margin: 10px;
+}
+
 i {
     font-family: inherit;
 }
