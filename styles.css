@@ -6,6 +6,7 @@
 	border-style: solid;
 	width: 350px;
 	float: left;
+	overflow-y: scroll;
 }
 
 i {

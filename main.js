@@ -21,6 +21,9 @@ var canvas = d3.select("#canvas");
 canvas.attr("width", WIDTH)
 	.attr("height", HEIGHT);
 
+var sidePanel = d3.select("#side-panel")
+	.style("height", HEIGHT + "px");
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Draw vertices
