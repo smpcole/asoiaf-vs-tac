@@ -40,6 +40,10 @@ h1, h2 {
 	font-family: 'MedievalSharp', cursive;
 }
 
+h1 {
+    font-size: 36pt;
+}
+
 .vertex circle {
     cx: 0;
 	cy: 0;
