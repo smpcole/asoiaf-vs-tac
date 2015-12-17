@@ -1,4 +1,4 @@
-* {
+html {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -35,10 +35,6 @@ body {
 #connected-char img {
     float: right;
     padding-left: 10px;
-}
-
-i {
-    font-family: inherit;
 }
 
 h1, h2 {
