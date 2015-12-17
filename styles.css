@@ -8,20 +8,28 @@
 	float: left;
 	overflow-y: scroll;
     background-image: url("concrete_seamless.png");
-}
-
-#side-panel img {
-	width: 100px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
+#side-panel div {
+    clear: both;
+	padding-bottom: 10px;
+}
+
+#side-panel img {
+	width: 100px;
+	padding: inherit;
+}
+
 #selected-char img {
     float: left;
+	padding-right: 10px;
 }
 
 #connected-char img {
     float: right;
+    padding-left: 10px;
 }
 
 i {
