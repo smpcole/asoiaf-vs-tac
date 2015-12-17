@@ -2,6 +2,11 @@
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
+body {
+    background-image: url("fleur_de_lis.svg");
+	background-size: 17%;
+}
+
 #side-panel {
 	border-style: solid;
 	width: 350px;
