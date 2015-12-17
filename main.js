@@ -91,9 +91,13 @@ function vertexClicked(v) {
 	sidePanel.select("#instructions").remove();
 	sidePanel.selectAll("div").html("");
 
-	var charInfo = sidePanel.select("#selected-char");
-	charInfo.append("img")
+	showInfo(v, sidePanel.select("#selected-char"));
+}
+
+// Append info from vertex v to selection
+function showInfo(v, selection) {
+	selection.append("img")
 		.attr("src", "pics/" + v.id + ".jpg");
-	charInfo.append("h2")
+	selection.append("h2")
 		.html(v.name);
 }
