@@ -53,6 +53,7 @@ var edges = canvas.selectAll(".edge") // Should be empty
 	.attr("y1", function(e) {return vertexPos(e.l).y;})
 	.attr("x2", RIGHT_X)
 	.attr("y2", function(e) {return vertexPos(e.r).y;})
+	.on("click", edgeClicked)
 	.classed("edge", true);
 
 ////////////////// Helper functions //////////////////
@@ -101,4 +102,19 @@ function showInfo(v, selection) {
 		.attr("src", "pics/" + v.id + ".jpg");
 	selection.append("h2")
 		.html(v.name);
+}
+
+function edgeClicked(e) {
+	
+	// Deselect other edges and select this one
+	edges.classed("selected", function(f) {
+			return f.l == e.l && f.r == e.r;
+		});
+
+	// Get the endpoint of e that is NOT the selected vertex
+	var otherV = (canvas.select(".vertex.selected").classed("tac") ? e.r : e.l); // ID
+	otherV = canvas.select("#" + otherV).datum(); // Vertex object
+
+	showInfo(otherV, sidePanel.select("#connected-char"));
+
 }
