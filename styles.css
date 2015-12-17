@@ -64,6 +64,7 @@ line.edge {
 line.edge.active {
 	opacity: 1;
 	pointer-events: auto;
+	cursor: pointer;
 }
 
 line.edge.active.selected {
