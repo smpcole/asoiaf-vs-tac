@@ -80,5 +80,6 @@ line.edge.active {
 }
 
 line.edge.active.selected {
+    stroke: blue;
 	stroke-width: 4px;
 }
