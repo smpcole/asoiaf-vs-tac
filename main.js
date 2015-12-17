@@ -125,4 +125,23 @@ function edgeClicked(e) {
 
 	showInfo(otherV, sidePanel.select("#connected-char"));
 
+	// Show connections between characters in a bulleted list
+	var connections = d3.select("#connections").html("");
+	connections.append("h2")
+		.html("Connections");
+	var ul = connections.append("ul");
+	d3.text("blurbs/" + e.l + "-" + e.r, function(error, blurb) {
+			if(error == null) {
+				blurb = blurb.split("\n"); // Each newline marks a new bullet
+				for(var i = 0; i < blurb.length; i++) {
+					blurb[i] = blurb[i].trim();
+					if(blurb[i].length == 0) // Skip empty lines
+						continue;
+					ul.append("li").html(blurb[i]);
+				}
+			}
+			else
+				console.log(error);
+		});
+
 }
