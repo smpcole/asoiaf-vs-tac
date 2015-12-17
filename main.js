@@ -104,6 +104,12 @@ function showInfo(v, selection) {
 		.attr("src", "pics/" + v.id + ".jpg");
 	selection.append("h2")
 		.html(v.name);
+	d3.text("blurbs/" + v.id, function(error, blurb) {
+		if(error == null)
+			selection.append("p").html(blurb);
+		else
+			console.log(error);
+	});
 }
 
 function edgeClicked(e) {
