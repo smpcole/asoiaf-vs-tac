@@ -94,9 +94,10 @@ function vertexClicked(v) {
 	showInfo(v, sidePanel.select("#selected-char"));
 }
 
-// Append info from vertex v to selection
+// Fill selection with info from vertex v
 function showInfo(v, selection) {
-	selection.append("img")
+	selection.html("")
+	  .append("img")
 		.attr("src", "pics/" + v.id + ".jpg");
 	selection.append("h2")
 		.html(v.name);
