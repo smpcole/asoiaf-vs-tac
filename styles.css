@@ -7,14 +7,19 @@ body {
 	background-size: 17%;
 }
 
+body > div {
+    border-style: solid;
+    background-image: url("concrete_seamless.png");
+	margin: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
 #side-panel {
-	border-style: solid;
 	width: 350px;
 	float: left;
 	overflow-y: scroll;
-    background-image: url("concrete_seamless.png");
-	padding-left: 10px;
-	padding-right: 10px;
 }
 
 #side-panel div {
