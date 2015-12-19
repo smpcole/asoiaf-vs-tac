@@ -7,6 +7,11 @@ body {
 	background-size: 17%;
 }
 
+body > div {
+    width: 1500px; /* Big enough to fit everything*/
+	overflow-x: scroll;
+}
+
 #side-panel {
 	border-style: solid;
 	width: 350px;
