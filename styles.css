@@ -12,6 +12,10 @@ body > div {
 	overflow-x: scroll;
 }
 
+#canvas {
+    float: left;
+}
+
 #side-panel {
 	border-style: solid;
 	width: 350px;
