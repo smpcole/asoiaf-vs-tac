@@ -8,7 +8,7 @@ body {
 }
 
 body > div {
-    width: 1500px; /* Big enough to fit everything*/
+    width: 1300px; /* Big enough to fit everything*/
 	overflow-x: scroll;
 }
 
