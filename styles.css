@@ -28,26 +28,27 @@ body > div {
 
 #side-panel {
 	width: 350px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #side-panel div {
     clear: both;
-	padding-bottom: 10px;
 }
 
 #side-panel img {
 	width: 100px;
-	padding: inherit;
+	margin-bottom: 5px;
 }
 
 #selected-char img {
     float: left;
-	padding-right: 10px;
+	margin-right: 10px;
 }
 
 #connected-char img {
     float: right;
-    padding-left: 10px;
+	margin-left: 10px;
 }
 
 h1, h2 {
