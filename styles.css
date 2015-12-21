@@ -12,7 +12,6 @@ body > div {
 	overflow-x: scroll;
 }
 
-
 #graphic, #side-panel {
     border-style: solid;
 	float: left;
@@ -20,9 +19,10 @@ body > div {
 	background-image: url("concrete_seamless.png");
 	overflow-y: scroll;
 	margin: 5px;
+	height: 480px;
 }
 
-#graphic {
+#graphic, #canvas {
     width: 820px;
 }
 

@@ -5,23 +5,12 @@ var LABEL_WIDTH = 200,
 	LABEL_OFFSET = 10, // Distance between label and center of vertex
 	MARGIN = {top: 75, bottom: 75, left: 0, right: 0};
 
-// Overall width of the graphics
-var WIDTH = GRAPH_WIDTH + 2 * (LABEL_WIDTH + LABEL_OFFSET);
-
-// Overall height of the graphics
-var HEIGHT = MARGIN.top + MARGIN.bottom + VTX_DIST * (Math.max(tac_chars.length, asoiaf_chars.length) - 1);
-
 // x-coordinates of vertices in left and right parts of the graph
 var LEFT_X = MARGIN.left + LABEL_WIDTH + LABEL_OFFSET,
 	RIGHT_X = LEFT_X + GRAPH_WIDTH;
 
 var canvas = d3.select("#canvas");
-
-canvas.attr("width", WIDTH)
-	.attr("height", HEIGHT);
-
-var sidePanel = d3.select("#side-panel")
-	.style("height", HEIGHT + "px");
+var sidePanel = d3.select("#side-panel");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
