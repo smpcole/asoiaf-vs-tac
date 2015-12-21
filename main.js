@@ -43,9 +43,9 @@ vertices.append("text")
 var edges = canvas.selectAll(".edge") // Should be empty
 	.data(edges)
   .enter().append("line")
-	.attr("x1", LEFT_X)
+	.attr("x1", vertexPos("clemence").x) // Use any TAC character
 	.attr("y1", function(e) {return vertexPos(e.l).y;})
-	.attr("x2", RIGHT_X)
+	.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
 	.attr("y2", function(e) {return vertexPos(e.r).y;})
 	.on("click", edgeClicked)
 	.classed("edge", true);
