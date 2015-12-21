@@ -11,6 +11,10 @@ var LEFT_X = LABEL_WIDTH + LABEL_OFFSET,
 var canvas = d3.select("#canvas");
 var sidePanel = d3.select("#side-panel");
 
+// Overall width of canvas
+var WIDTH = canvas.style("width");
+WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Draw vertices
