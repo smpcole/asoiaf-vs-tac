@@ -1,12 +1,7 @@
 var LABEL_WIDTH = 200,
-	GRAPH_WIDTH = 400, // Horizontal distance between centers of vertices on opposite sides
 	VTX_DIST = 40, // Distance between centers of two consecutive vertices
 	VTX_RAD = 4,
 	LABEL_OFFSET = 10; // Distance between label and center of vertex
-
-// x-coordinates of vertices in left and right parts of the graph
-var LEFT_X = LABEL_WIDTH + LABEL_OFFSET,
-	RIGHT_X = LEFT_X + GRAPH_WIDTH;
 
 var canvas = d3.select("#canvas");
 var sidePanel = d3.select("#side-panel");
@@ -61,7 +56,7 @@ function vertexPos(v) {
 		v = canvas.select("#" + v).datum();
 
 	var pos = {
-		x: (v.series == "tac" ? LEFT_X : RIGHT_X), 
+		x: (v.series == "tac" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH), 
 		y: v.index * VTX_DIST
 	};
 	return pos;
