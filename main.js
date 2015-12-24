@@ -3,6 +3,9 @@ var LABEL_WIDTH = 200,
 	VTX_RAD = 4,
 	LABEL_OFFSET = 10; // Distance between label and center of vertex
 
+// Translate every vertex (hence entire graphic) by this much
+var VTX_TRANS = {x: 0, y: 20};
+
 var canvas = d3.select("#canvas");
 var sidePanel = d3.select("#side-panel");
 
@@ -56,8 +59,8 @@ function vertexPos(v) {
 		v = canvas.select("#" + v).datum();
 
 	var pos = {
-		x: (v.series == "tac" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH), 
-		y: v.index * VTX_DIST
+		x: (v.series == "tac" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH) + VTX_TRANS.x, 
+		y: v.index * VTX_DIST + VTX_TRANS.y
 	};
 	return pos;
 }
