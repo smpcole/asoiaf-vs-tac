@@ -4,22 +4,22 @@ html {
 
 body {
     background-image: url("fleur_de_lis.svg");
-	background-size: 17%;
+    background-size: 17%;
 }
 
 body > div {
     width: 1300px; /* Big enough to fit everything*/
-	overflow-x: scroll;
+    overflow-x: scroll;
 }
 
 #graphic, #side-panel {
     border-style: solid;
-	float: left;
-	overflow-y: scroll;
-	background-image: url("concrete_seamless.png");
-	overflow-y: scroll;
-	margin: 5px;
-	height: 480px;
+    float: left;
+    overflow-y: scroll;
+    background-image: url("concrete_seamless.png");
+    overflow-y: scroll;
+    margin: 5px;
+    height: 480px;
 }
 
 #graphic, #canvas {
@@ -31,9 +31,9 @@ body > div {
 }
 
 #side-panel {
-	width: 350px;
-	padding-left: 10px;
-	padding-right: 10px;
+    width: 350px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #side-panel div {
@@ -41,22 +41,22 @@ body > div {
 }
 
 #side-panel img {
-	width: 100px;
-	margin-bottom: 5px;
+    width: 100px;
+    margin-bottom: 5px;
 }
 
 #selected-char img {
     float: left;
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 #connected-char img {
     float: right;
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 h1, h2 {
-	font-family: 'MedievalSharp', cursive;
+    font-family: 'MedievalSharp', cursive;
 }
 
 h1 {
@@ -65,39 +65,39 @@ h1 {
 
 .vertex circle {
     cx: 0;
-	cy: 0;
+    cy: 0;
 }
 
 .vertex * {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .vertex.tac text {
-	text-anchor: end;
+    text-anchor: end;
 }
 
 .vertex.asoiaf text {
-	text-anchor: start;
+    text-anchor: start;
 }
 
 .vertex.selected text {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 line.edge {
-	stroke: black;
-	opacity: .25;
-	stroke-width: 2px;
-	pointer-events: none;
+    stroke: black;
+    opacity: .25;
+    stroke-width: 2px;
+    pointer-events: none;
 }
 
 line.edge.active {
-	opacity: 1;
-	pointer-events: auto;
-	cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 line.edge.active.selected {
     stroke: blue;
-	stroke-width: 4px;
+    stroke-width: 4px;
 }
