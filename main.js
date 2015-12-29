@@ -13,41 +13,6 @@ var sidePanel = d3.select("#side-panel");
 var WIDTH = canvas.style("width");
 WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Draw vertices
-var vertices = canvas.selectAll(".vertex") // Should be empty
-	.data(vertexList)
-  .enter().append("g")
-	.classed("vertex", true)
-	.classed("tac", function(v) {return v.series == "tac";})
-	.classed("asoiaf", function(v) {return v.series == "asoiaf";})
-	.on("click", vertexClicked)
-	.attr("id", function(v) {return v.id;})
-	.attr("transform", function(v) {
-			var pos = vertexPos(v);
-			return "translate(" + pos.x + "," + pos.y + ")";
-		});
-  
-vertices.append("circle")
-	.attr("r", VTX_RAD);
-
-vertices.append("text")
-	.text(function(v) {return v.name;})
-	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
-	.attr("y", 4);
-
-// Draw edges
-var edges = canvas.selectAll(".edge") // Should be empty
-	.data(edgeList)
-  .enter().append("line")
-	.attr("x1", vertexPos("clemence").x) // Use any TAC character
-	.attr("y1", function(e) {return vertexPos(e.l).y;})
-	.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
-	.attr("y2", function(e) {return vertexPos(e.r).y;})
-	.on("click", edgeClicked)
-	.classed("edge", true);
-
 ////////////////// Helper functions //////////////////
 
 // Return absolute coordinates of center of vertex
@@ -135,3 +100,39 @@ function edgeClicked(e) {
 		});
 
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Draw vertices
+var vertices = canvas.selectAll(".vertex") // Should be empty
+	.data(vertexList)
+  .enter().append("g")
+	.classed("vertex", true)
+	.classed("tac", function(v) {return v.series == "tac";})
+	.classed("asoiaf", function(v) {return v.series == "asoiaf";})
+	.on("click", vertexClicked)
+	.attr("id", function(v) {return v.id;})
+	.attr("transform", function(v) {
+			var pos = vertexPos(v);
+			return "translate(" + pos.x + "," + pos.y + ")";
+		});
+  
+vertices.append("circle")
+	.attr("r", VTX_RAD);
+
+vertices.append("text")
+	.text(function(v) {return v.name;})
+	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
+	.attr("y", 4);
+
+// Draw edges
+var edges = canvas.selectAll(".edge") // Should be empty
+	.data(edgeList)
+  .enter().append("line")
+	.attr("x1", vertexPos("clemence").x) // Use any TAC character
+	.attr("y1", function(e) {return vertexPos(e.l).y;})
+	.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
+	.attr("y2", function(e) {return vertexPos(e.r).y;})
+	.on("click", edgeClicked)
+	.classed("edge", true);
