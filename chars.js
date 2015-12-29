@@ -22,7 +22,7 @@ var tac_chars = [
  * - series: either "tac" or "asoiaf"
  * - index: the vertex's index in its respective list
  */
-var vertices = [];
+var vertexList = [];
 
 /* Define "edge" object corresponding to each connection between a TAC character and an ASOIAF character
  *
@@ -30,7 +30,7 @@ var vertices = [];
  * - l: the ID of the TAC character (left part of graph)
  * - r: the ID of the ASOIAF character (right part of graph)
  */
-var edges = [];
+var edgeList = [];
 
 var l = asoiaf_chars;
 while(true) {
@@ -48,13 +48,13 @@ while(true) {
 			index: i
 		};
 
-		vertices.push(vertex);
+		vertexList.push(vertex);
 
 		if(l == tac_chars) {
 			// Add edges
 			for(var j = 2; j < tac_chars[i].length; j++) {
 				var nbr_ID = tac_chars[i][j];
-				edges.push({l: char_ID, r: nbr_ID});
+				edgeList.push({l: char_ID, r: nbr_ID});
 			}
 		}
 

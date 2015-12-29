@@ -17,7 +17,7 @@ WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
 
 // Draw vertices
 var vertices = canvas.selectAll(".vertex") // Should be empty
-	.data(vertices)
+	.data(vertexList)
   .enter().append("g")
 	.classed("vertex", true)
 	.classed("tac", function(v) {return v.series == "tac";})
@@ -39,7 +39,7 @@ vertices.append("text")
 
 // Draw edges
 var edges = canvas.selectAll(".edge") // Should be empty
-	.data(edges)
+	.data(edgeList)
   .enter().append("line")
 	.attr("x1", vertexPos("clemence").x) // Use any TAC character
 	.attr("y1", function(e) {return vertexPos(e.l).y;})
