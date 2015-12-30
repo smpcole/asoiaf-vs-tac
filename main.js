@@ -111,7 +111,6 @@ var vertices = canvas.selectAll(".vertex") // Should be empty
 	.classed("vertex", true)
 	.classed("tac", function(v) {return v.series == "tac";})
 	.classed("asoiaf", function(v) {return v.series == "asoiaf";})
-	.on("click", vertexClicked)
 	.attr("id", function(v) {return v.id;})
 	.attr("transform", function(v) {
 			var pos = vertexPos(v);
@@ -148,6 +147,8 @@ function addEdge(e) {
 				.attr("y2", function(e) {return vertexPos(e.r).y;})
 				.on("click", edgeClicked)
 				.classed("edge", true);
+
+			vertices.on("click", vertexClicked);
 		}
 	};
 }
