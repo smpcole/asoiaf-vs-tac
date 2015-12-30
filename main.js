@@ -137,20 +137,26 @@ function addEdge(e) {
 		if(this.status == 200 || this.status == 0) // File exists; add an edge
 			edgeList.push(e);
 		
-		if(++pairsProcessed == tac_chars.length * asoiaf_chars.length) {	
-			// Done with last pair; draw edges
-			edges = edges.data(edgeList)
-			  .enter().append("line")
-				.attr("x1", vertexPos("clemence").x) // Use any TAC character
-				.attr("y1", function(e) {return vertexPos(e.l).y;})
-				.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
-				.attr("y2", function(e) {return vertexPos(e.r).y;})
-				.on("click", edgeClicked)
-				.classed("edge", true);
+		drawIfDone();
 
-			vertices.on("click", vertexClicked);
-		}
 	};
+}
+
+// Draw edges when done with last pair
+function drawIfDone() {
+	if(++pairsProcessed == tac_chars.length * asoiaf_chars.length) {
+		// Done with last pair; draw edges
+		edges = edges.data(edgeList)
+		  .enter().append("line")
+			.attr("x1", vertexPos("clemence").x) // Use any TAC character
+			.attr("y1", function(e) {return vertexPos(e.l).y;})
+			.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
+			.attr("y2", function(e) {return vertexPos(e.r).y;})
+			.on("click", edgeClicked)
+			.classed("edge", true);
+
+		vertices.on("click", vertexClicked);
+	}
 }
 
 for(var i = 0; i < tac_chars.length; i++) {
