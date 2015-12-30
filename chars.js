@@ -6,8 +6,8 @@ var asoiaf_chars = [
 
 // List of TAC characters, their IDs, and their neighbors' IDs
 var tac_chars = [
-				 ["Clemence of Hungary", "clemence", "sansa"],
-				 ["Marguerite of Burgundy", "marguerite", "sansa", "cersei"]
+				 ["Clemence of Hungary", "clemence"],
+				 ["Marguerite of Burgundy", "marguerite"]
 				 ];
 
 
