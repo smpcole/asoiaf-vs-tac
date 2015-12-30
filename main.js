@@ -165,6 +165,7 @@ for(var i = 0; i < tac_chars.length; i++) {
 		var e = {l: tac_chars[i], r: asoiaf_chars[j]};
 		req.open("HEAD", "blurbs/" + e.l + "-" + e.r, true); // True makes it asynchronous
 		req.onload = addEdge(e);
+		req.onerror = drawIfDone; // onload not called; still darw edges if done
 		req.send();
 	}
 }
