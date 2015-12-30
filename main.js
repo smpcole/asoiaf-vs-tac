@@ -134,7 +134,7 @@ var pairsProcessed = 0;
 function addEdge(e) {
 	return function() {
 		
-		if(this.status == 200) // File exists; add an edge
+		if(this.status == 200 || this.status == 0) // File exists; add an edge
 			edgeList.push(e);
 		
 		if(++pairsProcessed == tac_chars.length * asoiaf_chars.length) {	
