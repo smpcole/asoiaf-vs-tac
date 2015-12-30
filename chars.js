@@ -50,14 +50,6 @@ while(true) {
 
 		vertexList.push(vertex);
 
-		if(l == tac_chars) {
-			// Add edges
-			for(var j = 2; j < tac_chars[i].length; j++) {
-				var nbr_ID = tac_chars[i][j];
-				edgeList.push({l: char_ID, r: nbr_ID});
-			}
-		}
-
 		// Delete everything but the character ID from the original list
 		l[i] = char_ID;
 	}

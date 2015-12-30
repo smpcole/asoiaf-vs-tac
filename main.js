@@ -127,12 +127,37 @@ vertices.append("text")
 	.attr("y", 4);
 
 // Draw edges
-var edges = canvas.selectAll(".edge") // Should be empty
-	.data(edgeList)
-  .enter().append("line")
-	.attr("x1", vertexPos("clemence").x) // Use any TAC character
-	.attr("y1", function(e) {return vertexPos(e.l).y;})
-	.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
-	.attr("y2", function(e) {return vertexPos(e.r).y;})
-	.on("click", edgeClicked)
-	.classed("edge", true);
+
+var edges = canvas.selectAll(".edge"); // Should be empty
+var pairsProcessed = 0;
+
+// Return callback for adding edge to edgeList
+function addEdge(e) {
+	return function() {
+		
+		if(this.status == 200) // File exists; add an edge
+			edgeList.push(e);
+		
+		if(++pairsProcessed == tac_chars.length * asoiaf_chars.length) {	
+			// Done with last pair; draw edges
+			edges = edges.data(edgeList)
+			  .enter().append("line")
+				.attr("x1", vertexPos("clemence").x) // Use any TAC character
+				.attr("y1", function(e) {return vertexPos(e.l).y;})
+				.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
+				.attr("y2", function(e) {return vertexPos(e.r).y;})
+				.on("click", edgeClicked)
+				.classed("edge", true);
+		}
+	};
+}
+
+for(var i = 0; i < tac_chars.length; i++) {
+	for(var j = 0; j < asoiaf_chars.length; j++) {
+		var req = new XMLHttpRequest();
+		var e = {l: tac_chars[i], r: asoiaf_chars[j]};
+		req.open("HEAD", "blurbs/" + e.l + "-" + e.r, true); // True makes it asynchronous
+		req.onload = addEdge(e);
+		req.send();
+	}
+}
