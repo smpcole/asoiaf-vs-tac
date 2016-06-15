@@ -59,12 +59,28 @@ function showInfo(v, selection) {
 		.attr("src", "pics/" + v.id + ".jpg");
 	selection.append("h2")
 		.html(v.name);
-	d3.text("blurbs/" + v.id, function(error, blurb) {
-		if(error == null)
-			selection.append("p").html(blurb);
-		else
-			console.log(error);
-	});
+	
+	var wiki_handle = v.name.replace(/ /g, "_");
+	var url = "http://en.wikipedia.org/w/api.php?action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
+	var req = new XMLHttpRequest();
+	req.open("GET", url, true);
+
+	req.onload = function() {
+		var pages = JSON.parse(this.response).query.pages;
+		for(var pageid in pages) {
+			selection.append("p").html(pages[pageid].extract);
+			break; // Only want one page
+		}
+		selection.append("a")
+		    .attr("href", "http://en.wikipedia.org/wiki/" + wiki_handle)
+		    .html("Wikipedia");
+	};
+	
+	req.onerror = function() {
+		console.log("Error opening " + url);
+	};
+
+	req.send();
 }
 
 function edgeClicked(e) {
