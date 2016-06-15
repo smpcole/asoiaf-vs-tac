@@ -60,7 +60,9 @@ function showInfo(v, selection) {
 	selection.append("h2")
 		.html(v.name);
 	
-	var wiki_handle = v.name.replace(/ /g, "_");
+	var wiki_handle = v.wiki_handle;
+	if(wiki_handle == undefined)
+		wiki_handle = v.name.replace(/ /g, "_");
 	var url = "http://en.wikipedia.org/w/api.php?action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
 	var req = new XMLHttpRequest();
 	req.open("GET", url, true);

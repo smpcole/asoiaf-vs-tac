@@ -7,7 +7,7 @@ var asoiaf_chars = [
 // List of TAC characters, their IDs, and their neighbors' IDs
 var tac_chars = [
 				 ["Clemence of Hungary", "clemence"],
-				 ["Marguerite of Burgundy", "marguerite"]
+				 ["Marguerite of Burgundy", "marguerite", "Margaret_of_Burgundy,_Queen_of_France"]
 				 ];
 
 
@@ -48,6 +48,9 @@ while(true) {
 			index: i
 		};
 
+		if(l[i].length >= 3)
+			vertex.wiki_handle = l[i][2];
+			
 		vertexList.push(vertex);
 
 		// Delete everything but the character ID from the original list
