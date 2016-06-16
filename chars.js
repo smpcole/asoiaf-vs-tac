@@ -6,8 +6,42 @@ var asoiaf_chars = [
 
 // List of TAC characters, their IDs, and their neighbors' IDs
 var tac_chars = [
+				 ["Allies", "allies"],
+				 ["Brothers d'Aunay", "aunays"],
+				 ["Beatrice d'Hirson", "beatrice"],
+				 ["Blanche of Burgundy", "blanche"],
+				 ["Hugues de Bouville", "bouville"],
+				 ["Charles IV of France", "charles4"],
 				 ["Clemence of Hungary", "clemence"],
-				 ["Marguerite of Burgundy", "marguerite"]
+				 ["Hugh Despenser the Younger", "despenser"],
+				 ["Edward II of England", "edward2"],
+				 ["Edward III of England", "edward3"],
+				 ["Gaucher V de Chatillon", "gaucher"],
+				 ["Guccio Baglioni", "guccio"],
+				 ["Isabella of France", "isabella"],
+				 ["Jean I of France", "jean1"],
+				 ["Jeanne of Burgundy", "jeanneofburgundy"],
+				 ["Pope John XXII", "john22"],
+				 ["The Knights Templar", "templars"],
+				 ["Louis IX of France", "louis9"],
+				 ["Louis X of France", "louis10"],
+				 ["Louis X's illegitimate daughter", "louisdaughter"], // TODO: what's her name?
+				 ["Mahaut of Artois", "mahaut"],
+				 ["Marguerite of Burgundy", "marguerite"],
+				 ["Marie de Cressay", "marie"],
+				 ["Marie of Hungary", "marieofhungary"],
+				 ["Roger Mortimer", "mortimer"],
+				 ["Guillaume de Nogaret", "nogaret"],
+				 ["Enguerrand de Marigny", "marigny"],
+				 ["Philip IV of France", "philip4"],
+				 ["Philip IV's hounds", "hounds"],
+				 ["Philippa of Hainaut", "philippa"],
+				 ["Philippe V of France", "philippe5"],
+				 ["Cola di Rienzi", "rienzi"],
+				 ["Robert III of Artois", "robertofartois"],
+				 ["Spinello Tolomei", "tolomei"],
+				 ["Charles of Valois", "valois"],
+				 ["William I of England", "william"]
 				 ];
 
 
