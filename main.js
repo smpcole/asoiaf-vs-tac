@@ -62,7 +62,10 @@ function showInfo(v, selection) {
 	
 	var wiki_handle = v.wiki_handle;
 	if(wiki_handle == undefined)
-		wiki_handle = v.name.replace(/ /g, "_");
+		/* 
+		 * Replace spaces with _s and 's (as in Beatrice d'Hirson) with %27s
+		 */
+		wiki_handle = v.name.replace(/ /g, "_").replace(/\'/g, "%27"); 
 
 	var url = "http://";
 	var link_url = "http://";
