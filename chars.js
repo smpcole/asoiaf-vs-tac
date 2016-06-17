@@ -9,7 +9,7 @@ var asoiaf_chars = [
 					["Renly Baratheon", "renly"],
 					["Tommen Baratheon", "tommen"],
 					["Bronn", "bronn"],
-					["Brotherhood Without Banners", "brotherhoodwithoutbanners"],
+					["Brotherhood Without Banners", "brotherhood"],
 					["Gregor Clegane", "gregor"],
 					["Direwolves", "direwolves"],
 					["Bloodriders", "bloodriders"],
