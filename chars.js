@@ -67,6 +67,7 @@ var tac_chars = [
 				 ["Jeanne of Burgundy", "jeanneofburgundy"],
 				 ["Pope John XXII", "john22"],
 				 ["The Knights Templar", "templars"],
+				 ["Lormet", "lormet"],
 				 ["Louis IX of France", "louis9"],
 				 ["Louis X of France", "louis10"],
 				 ["Louis X's illegitimate daughter", "louisdaughter"], // TODO: what's her name?
