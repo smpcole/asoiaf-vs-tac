@@ -63,7 +63,20 @@ function showInfo(v, selection) {
 	var wiki_handle = v.wiki_handle;
 	if(wiki_handle == undefined)
 		wiki_handle = v.name.replace(/ /g, "_");
-	var url = "http://en.wikipedia.org/w/api.php?action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
+
+	var url = "http://";
+	var link_url = "http://";
+	if(v.series == "tac") {
+		url += "en.wikipedia.org/w/api.php?";
+		link_url += "en.wikipedia.org/wiki/";
+	}
+	else {
+		url += "awoiaf.westeros.org/api.php?";
+		link_url += "awoiaf.westeros.org/index.php/";
+	}
+	link_url += wiki_handle;
+
+	url += "action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
 	var req = new XMLHttpRequest();
 	req.open("GET", url, true);
 
@@ -74,8 +87,8 @@ function showInfo(v, selection) {
 			break; // Only want one page
 		}
 		selection.append("a")
-		    .attr("href", "http://en.wikipedia.org/wiki/" + wiki_handle)
-		    .html("Wikipedia");
+		    .attr("href", link_url)
+		    .html("Read more");
 	};
 	
 	req.onerror = function() {
