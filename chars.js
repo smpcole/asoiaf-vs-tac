@@ -12,7 +12,6 @@ var asoiaf_chars = [
 					["Brotherhood Without Banners", "brotherhood"],
 					["Gregor Clegane", "gregor"],
 					["Direwolves", "direwolves"],
-					["Bloodriders", "bloodriders"],
 					["Dragons", "dragons"],
 					["Drogo", "drogo"],
 					["Mirri Maz Duur", "mirri"],
