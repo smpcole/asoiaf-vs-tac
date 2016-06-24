@@ -71,7 +71,6 @@ var tac_chars = [
 				 ["Louis X of France", "louis10"],
 				 ["Louis X's illegitimate daughter", "louisdaughter"], // TODO: what's her name?
 				 ["Mahaut of Artois", "mahaut"],
-				 ["Marguerite of Burgundy", "marguerite"],
 				 ["Marie de Cressay", "marie"],
 				 ["Marie of Hungary", "marieofhungary"],
 				 ["Roger Mortimer", "mortimer"],
@@ -86,10 +85,9 @@ var tac_chars = [
 				 ["Spinello Tolomei", "tolomei"],
 				 ["Charles of Valois", "valois"],
 				 ["William I of England", "william"]
+				 ["Marguerite of Burgundy", "marguerite", "Margaret_of_Burgundy,_Queen_of_France"]
 				 ];
 
-
-////////////////////////////////////
 
 /*
  * Define "vertex" object corresponding to each character
@@ -126,6 +124,9 @@ while(true) {
 			index: i
 		};
 
+		if(l[i].length >= 3)
+			vertex.wiki_handle = l[i][2];
+			
 		vertexList.push(vertex);
 
 		// Delete everything but the character ID from the original list

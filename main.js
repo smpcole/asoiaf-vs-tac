@@ -64,25 +64,62 @@ function showInfo(v, selection) {
 	function addText() {
 		selection.append("h2")
 		    .html(v.name);
-		d3.text("blurbs/" + v.id, function(error, blurb) {
-				if(error == null)
-					selection.append("p").html(blurb);
-				else
-					console.log(error);
-			});
+	
+		var wiki_handle = v.wiki_handle;
+		if(wiki_handle == undefined)
+			/* 
+			 * Replace spaces with _s and 's (as in Beatrice d'Hirson) with %27s
+			 */
+			wiki_handle = v.name.replace(/ /g, "_").replace(/\'/g, "%27"); 
+
+		var url = "http://";
+		var link_url = "http://";
+		if(v.series == "tac") {
+			url += "en.wikipedia.org/w/api.php?";
+			link_url += "en.wikipedia.org/wiki/";
+		}
+		else {
+			url += "awoiaf.westeros.org/api.php?";
+			link_url += "awoiaf.westeros.org/index.php/";
+		}
+		link_url += wiki_handle;
+
+		url += "action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
+		var req = new XMLHttpRequest();
+		req.open("GET", url, true);
+
+		req.onload = function() {
+			console.log("onload called: " + v.name);
+			var pages = JSON.parse(this.response).query.pages;
+			for(var pageid in pages) {
+				selection.append("p").html(pages[pageid].extract);
+				break; // Only want one page
+			}
+			selection.append("a")
+		        .attr("href", link_url)
+		        .html("Read more");
+		};
+	
+		req.onerror = function() {
+			console.log("Error opening " + url);
+		};
+
+		req.send();
+
 	};
 
 	// Check for image file first
-	var url = "pics/" + v.id + ".jpg";
-	var req = new XMLHttpRequest();
-	req.open("HEAD", url, true);
-	req.onload = function() {
+	var img_url = "pics/" + v.id + ".jpg";
+	var img_req = new XMLHttpRequest();
+	img_req.open("HEAD", img_url, true);
+	img_req.onload = function() {
 		selection.append("img")
-		    .attr("src", url);
+		    .attr("src", img_url);
 		addText();
 	};
-	req.onerror = addText;
-	req.send();
+	img_req.onerror = addText;
+
+	img_req.send();
 }
 
 function edgeClicked(e) {
