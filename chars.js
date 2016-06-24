@@ -71,6 +71,7 @@ var tac_chars = [
 				 ["Louis X of France", "louis10"],
 				 ["Louis X's illegitimate daughter", "louisdaughter"], // TODO: what's her name?
 				 ["Mahaut of Artois", "mahaut"],
+				 ["Marguerite of Burgundy", "marguerite", "Margaret_of_Burgundy,_Queen_of_France"],
 				 ["Marie de Cressay", "marie"],
 				 ["Marie of Hungary", "marieofhungary"],
 				 ["Roger Mortimer", "mortimer"],
@@ -85,7 +86,6 @@ var tac_chars = [
 				 ["Spinello Tolomei", "tolomei"],
 				 ["Charles of Valois", "valois"],
 				 ["William I of England", "william"]
-				 ["Marguerite of Burgundy", "marguerite", "Margaret_of_Burgundy,_Queen_of_France"]
 				 ];
 
 
