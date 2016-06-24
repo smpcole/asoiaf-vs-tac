@@ -57,17 +57,32 @@ function vertexClicked(v) {
 
 // Fill selection with info from vertex v
 function showInfo(v, selection) {
-	selection.html("")
-	  .append("img")
-		.attr("src", "pics/" + v.id + ".jpg");
-	selection.append("h2")
-		.html(v.name);
-	d3.text("blurbs/" + v.id, function(error, blurb) {
-		if(error == null)
-			selection.append("p").html(blurb);
-		else
-			console.log(error);
-	});
+
+	selection.html("");
+
+	// We will add text whether the image loads or not
+	function addText() {
+		selection.append("h2")
+		    .html(v.name);
+		d3.text("blurbs/" + v.id, function(error, blurb) {
+				if(error == null)
+					selection.append("p").html(blurb);
+				else
+					console.log(error);
+			});
+	};
+
+	// Check for image file first
+	var url = "pics/" + v.id + ".jpg";
+	var req = new XMLHttpRequest();
+	req.open("HEAD", url, true);
+	req.onload = function() {
+		selection.append("img")
+		    .attr("src", url);
+		addText();
+	};
+	req.onerror = addText;
+	req.send();
 }
 
 function edgeClicked(e) {
