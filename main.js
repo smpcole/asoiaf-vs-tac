@@ -23,13 +23,10 @@ function vertexPos(v) {
 	if(v.name == undefined)
 		v = canvas.select("#" + v).datum();
 
-	console.log(v);
-
 	var pos = {
 		x: (v.series == "tac" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH) + VTX_TRANS.x, 
 		y: v.index * VTX_DIST + VTX_TRANS.y
 	};
-	console.log(pos);
 	return pos;
 }
 
@@ -89,7 +86,6 @@ function showInfo(v, selection) {
 		req.open("GET", url, true);
 
 		req.onload = function() {
-			console.log("onload called: " + v.name);
 			var pages = JSON.parse(this.response).query.pages;
 			for(var pageid in pages) {
 				selection.append("p").html(pages[pageid].extract);
