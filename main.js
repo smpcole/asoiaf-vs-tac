@@ -13,6 +13,10 @@ var sidePanel = d3.select("#side-panel");
 var WIDTH = canvas.style("width");
 WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
 
+// Set height based on the number of vertices
+var HEIGHT = VTX_DIST * Math.max(asoiaf_chars.length, tac_chars.length);
+canvas.style("height", HEIGHT);
+
 ////////////////// Helper functions //////////////////
 
 // Return absolute coordinates of center of vertex
@@ -177,6 +181,7 @@ vertices.append("text")
 	.attr("y", 4);
 
 console.log(vertices);
+console.log(canvas.style("height"));
 
 // Draw edges
 
