@@ -67,19 +67,19 @@ function showInfo(v, selection) {
 	if(wiki_handle == undefined)
 		wiki_handle = encodeURI(v.name);
 
-	var url = "http://";
+	var domain = null;
 	var link_url = "http://";
 	if(v.series == "tac") {
-		url += "en.wikipedia.org/w/api.php?";
+		domain = "en%2Ewikipedia%2Eorg%2Fw";
 		link_url += "en.wikipedia.org/wiki/";
 	}
 	else {
-		url += "awoiaf.westeros.org/api.php?";
+		domain = "awoiaf%2Ewesteros%2Eorg";
 		link_url += "awoiaf.westeros.org/index.php/";
 	}
 	link_url += wiki_handle;
 
-	url += "action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
+	url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
 	var req = new XMLHttpRequest();
 	req.open("GET", url, true);
 
