@@ -65,27 +65,27 @@ function showInfo(v, selection) {
 	function addText() {
 		selection.append("h2")
 		    .html(v.name);
-	
+
+		/* Assume v.wiki_handle is a correctly encoded URL if defined,
+		 * e.g. %20 instead of ' '.
+		 */
 		var wiki_handle = v.wiki_handle;
 		if(wiki_handle == undefined)
-			/* 
-			 * Replace spaces with _s and 's (as in Beatrice d'Hirson) with %27s
-			 */
-			wiki_handle = v.name.replace(/ /g, "_").replace(/\'/g, "%27"); 
+			wiki_handle = encodeURI(v.name);
 
-		var url = "http://";
+		var domain = null;
 		var link_url = "http://";
 		if(v.series == "tac") {
-			url += "en.wikipedia.org/w/api.php?";
+			domain = "en%2Ewikipedia%2Eorg%2Fw";
 			link_url += "en.wikipedia.org/wiki/";
 		}
 		else {
-			url += "awoiaf.westeros.org/api.php?";
+			domain = "awoiaf%2Ewesteros%2Eorg";
 			link_url += "awoiaf.westeros.org/index.php/";
 		}
 		link_url += wiki_handle;
 
-		url += "action=query&redirects&format=json&&titles=" + wiki_handle + "&prop=extracts&utf8&exintro&exsentences=3&explaintext";
+		url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
 		var req = new XMLHttpRequest();
 		req.open("GET", url, true);
 
