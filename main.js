@@ -60,12 +60,12 @@ function showInfo(v, selection) {
 	selection.append("h2")
 		.html(v.name);
 	
+	/* Assume v.wiki_handle is a correctly encoded URL if defined,
+	 * e.g. %20 instead of ' '.
+	 */
 	var wiki_handle = v.wiki_handle;
 	if(wiki_handle == undefined)
-		/* 
-		 * Replace spaces with _s and 's (as in Beatrice d'Hirson) with %27s
-		 */
-		wiki_handle = v.name.replace(/ /g, "_").replace(/\'/g, "%27"); 
+		wiki_handle = encodeURI(v.name);
 
 	var url = "http://";
 	var link_url = "http://";
