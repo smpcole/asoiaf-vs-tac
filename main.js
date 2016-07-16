@@ -113,8 +113,9 @@ function showInfo(v, selection) {
 	var img_req = new XMLHttpRequest();
 	img_req.open("HEAD", img_url, true);
 	img_req.onload = function() {
-		selection.append("img")
-		    .attr("src", img_url);
+        if(this.status == 200 || this.status == 0) // File exists; add the image
+		    selection.append("img")
+		        .attr("src", img_url);
 		addText();
 	};
 	img_req.onerror = addText;
