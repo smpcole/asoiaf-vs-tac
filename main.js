@@ -187,24 +187,13 @@ console.log(canvas.style("height"));
 // Draw edges
 
 var edges = canvas.selectAll(".edge"); // Should be empty
-var pairsProcessed = 0;
 
-// Return callback for adding edge to edgeList
-function addEdge(e) {
-	return function() {
-		
-		if(this.status == 200 || this.status == 0) // File exists; add an edge
-			edgeList.push(e);
-		
-		drawIfDone();
-
-	};
-}
-
-// Draw edges when done with last pair
-function drawIfDone() {
-	if(++pairsProcessed == tac_chars.length * asoiaf_chars.length) {
-		// Done with last pair; draw edges
+// Get edge list from the server
+var req = new XMLHttpRequest();
+req.open("GET", "edges.php", true);
+req.onload = function() {
+	if(this.status == 200 || this.status == 0) {
+		edgeList = JSON.parse(this.response);
 		edges = edges.data(edgeList)
 		  .enter().append("line")
 			.attr("x1", vertexPos("clemence").x) // Use any TAC character
@@ -216,15 +205,5 @@ function drawIfDone() {
 
 		vertices.on("click", vertexClicked);
 	}
-}
-
-for(var i = 0; i < tac_chars.length; i++) {
-	for(var j = 0; j < asoiaf_chars.length; j++) {
-		var req = new XMLHttpRequest();
-		var e = {l: tac_chars[i], r: asoiaf_chars[j]};
-		req.open("HEAD", "blurbs/" + e.l + "-" + e.r, true); // True makes it asynchronous
-		req.onload = addEdge(e);
-		req.onerror = drawIfDone; // onload not called; still darw edges if done
-		req.send();
-	}
-}
+};
+req.send();
