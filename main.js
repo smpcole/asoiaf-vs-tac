@@ -1,4 +1,4 @@
-var LABEL_WIDTH = 200,
+var LABEL_WIDTH = 245,
 	VTX_DIST = 40, // Distance between centers of two consecutive vertices
 	VTX_RAD = 4,
 	LABEL_OFFSET = 10; // Distance between label and center of vertex
