@@ -66,45 +66,56 @@ function showInfo(v, selection) {
 		selection.append("h2")
 		    .html(v.name);
 
-		/* Assume v.wiki_handle is a correctly encoded URL if defined,
-		 * e.g. %20 instead of ' '.
-		 */
-		var wiki_handle = v.wiki_handle;
-		if(wiki_handle == undefined)
-			wiki_handle = encodeURI(v.name);
-
-		var domain = null;
-		var link_url = "http://";
-		if(v.series == "tac") {
-			domain = "en%2Ewikipedia%2Eorg%2Fw";
-			link_url += "en.wikipedia.org/wiki/";
-		}
-		else {
-			domain = "awoiaf%2Ewesteros%2Eorg";
-			link_url += "awoiaf.westeros.org/index.php/";
-		}
-		link_url += wiki_handle;
-
-		url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
-		var req = new XMLHttpRequest();
-		req.open("GET", url, true);
-
-		req.onload = function() {
-			var pages = JSON.parse(this.response).query.pages;
-			for(var pageid in pages) {
-				selection.append("p").html(pages[pageid].extract);
-				break; // Only want one page
+		// First look for text in blurbs folder; if not found, use wiki
+		d3.text("blurbs/" + v.id, function(error, blurb) {
+			if(error == null) {
+				selection.append("p").text(blurb.trim());
 			}
-			selection.append("a")
-		        .attr("href", link_url)
-		        .html("Read more");
-		};
-	
-		req.onerror = function() {
-			console.log("Error opening " + url);
-		};
+			else {
 
-		req.send();
+				// No blurb found; pull text from wiki
+				
+				/* Assume v.wiki_handle is a correctly encoded URL if defined,
+				 * e.g. %20 instead of ' '.
+				 */
+				var wiki_handle = v.wiki_handle;
+				if(wiki_handle == undefined)
+					wiki_handle = encodeURI(v.name);
+
+				var domain = null;
+				var link_url = "http://";
+				if(v.series == "tac") {
+					domain = "en%2Ewikipedia%2Eorg%2Fw";
+					link_url += "en.wikipedia.org/wiki/";
+				}
+				else {
+					domain = "awoiaf%2Ewesteros%2Eorg";
+					link_url += "awoiaf.westeros.org/index.php/";
+				}
+				link_url += wiki_handle;
+
+				url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
+				var req = new XMLHttpRequest();
+				req.open("GET", url, true);
+
+				req.onload = function() {
+					var pages = JSON.parse(this.response).query.pages;
+					for(var pageid in pages) {
+						selection.append("p").html(pages[pageid].extract);
+						break; // Only want one page
+					}
+					selection.append("a")
+						.attr("href", link_url)
+						.html("Read more");
+				};
+				
+				req.onerror = function() {
+					console.log("Error opening " + url);
+				};
+
+				req.send();
+			}
+		});
 
 	};
 
