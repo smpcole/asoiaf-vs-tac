@@ -91,7 +91,7 @@ function showInfo(v, selection) {
 		}
 		selection.append("a")
 		    .attr("href", link_url)
-		    .html("Read more");
+		    .html("From " + (v.series == "tac" ? "Wikipedia" : "A Wiki of Ice and Fire"));
 	};
 	
 	req.onerror = function() {
