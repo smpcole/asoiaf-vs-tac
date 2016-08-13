@@ -21,6 +21,7 @@ var asoiaf_chars = [
 	["Asha Greyjoy", "asha"],
 	["Theon Greyjoy", "theon"],
 	["High Sparrow", "highsparrow"],
+	["Iron Bank of Braavos", "ironbank"],
 	["Kettleblacks", "kettleblacks"],
 	["Cersei Lannister", "cersei"],
 	["Jaime Lannister", "jaime"],
