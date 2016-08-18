@@ -93,6 +93,10 @@ line.edge.active {
     cursor: pointer;
 }
 
+line.edge.active:hover {
+	stroke-width: 4px;
+}
+
 line.edge.active.selected {
     stroke: blue;
     stroke-width: 4px;
