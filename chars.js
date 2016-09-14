@@ -32,6 +32,7 @@ var asoiaf_chars = [
 	["Iron Bank of Braavos", "ironbank"],
 	["Barristan Selmy", "barristan"],
 	["Shae", "shae"],
+	["Jon Snow", "jon"],
 	["Catelyn Stark", "catelyn"],
 	["Eddard Stark", "eddard"],
 	["Robb Stark", "robb"],
