@@ -34,7 +34,8 @@ function vertexPos(v) {
 function vertexClicked(v) {
 
 	// Hide all edges first
-	edges.classed("active", false);
+	edges.classed("active", false)
+		.html("");
 
 	// Select current vertex & deselect all others
 	vertices.classed("selected", function(w) {return w.id == v.id;});
@@ -44,6 +45,15 @@ function vertexClicked(v) {
 			return e.l == v.id || e.r == v.id;
 		})
 		.classed("selected", false);
+
+	// Set mouseover text to name of connected character
+	canvas.selectAll(".edge.active")
+	  .append("title")
+        .html(function(e) {
+			var otherV = (v.series == "tac" ? e.r : e.l); // ID
+			console.log(otherV);
+			return canvas.select("#" + otherV).datum().name;
+		});
 
 	// Clear the side panel
 	sidePanel.select("#instructions").remove();
