@@ -29,7 +29,6 @@ var asoiaf_chars = [
 	["Tywin Lannister", "tywin"],
 	["Melisandre", "melisandre"],
 	["Ilyn Payne", "ilyn"],
-	["Iron Bank of Braavos", "ironbank"],
 	["Mance Rayder's son", "mancesson", "Aemon_Steelsong"],
 	["Barristan Selmy", "barristan"],
 	["Shae", "shae"],
