@@ -30,6 +30,7 @@ var asoiaf_chars = [
 	["Melisandre", "melisandre"],
 	["Ilyn Payne", "ilyn"],
 	["Iron Bank of Braavos", "ironbank"],
+	["Mance Rayder's son", "mancesson", "Aemon_Steelsong"],
 	["Barristan Selmy", "barristan"],
 	["Shae", "shae"],
 	["Jon Snow", "jon"],
