@@ -17,6 +17,7 @@ var asoiaf_chars = [
 	["Mirri Maz Duur", "mirri"],
 	["Faith Militant", "faithmilitant"],
 	["Gendry", "gendry"],
+	["Gilly", "gilly"],
 	["Grey Worm", "greyworm"],
 	["Asha Greyjoy", "asha"],
 	["Theon Greyjoy", "theon"],
