@@ -1,4 +1,4 @@
-var LABEL_WIDTH = 200,
+var LABEL_WIDTH = 245,
 	VTX_DIST = 40, // Distance between centers of two consecutive vertices
 	VTX_RAD = 4,
 	LABEL_OFFSET = 10; // Distance between label and center of vertex
@@ -12,6 +12,10 @@ var sidePanel = d3.select("#side-panel");
 // Overall width of canvas
 var WIDTH = canvas.style("width");
 WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
+
+// Set height based on the number of vertices
+var HEIGHT = VTX_DIST * Math.max(asoiaf_chars.length, tac_chars.length);
+canvas.style("height", HEIGHT);
 
 ////////////////// Helper functions //////////////////
 
@@ -64,51 +68,80 @@ function vertexClicked(v) {
 
 // Fill selection with info from vertex v
 function showInfo(v, selection) {
-	selection.html("")
-	  .append("img")
-		.attr("src", "pics/" + v.id + ".jpg");
-	selection.append("h2")
-		.html(v.name);
-	
-	/* Assume v.wiki_handle is a correctly encoded URL if defined,
-	 * e.g. %20 instead of ' '.
-	 */
-	var wiki_handle = v.wiki_handle;
-	if(wiki_handle == undefined)
-		wiki_handle = encodeURI(v.name);
 
-	var domain = null;
-	var link_url = "http://";
-	if(v.series == "tac") {
-		domain = "en%2Ewikipedia%2Eorg%2Fw";
-		link_url += "en.wikipedia.org/wiki/";
-	}
-	else {
-		domain = "awoiaf%2Ewesteros%2Eorg";
-		link_url += "awoiaf.westeros.org/index.php/";
-	}
-	link_url += wiki_handle;
+	selection.html("");
 
-	url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
-	var req = new XMLHttpRequest();
-	req.open("GET", url, true);
+	// We will add text whether the image loads or not
+	function addText() {
+		selection.append("h2")
+		    .html(v.name);
 
-	req.onload = function() {
-		var pages = JSON.parse(this.response).query.pages;
-		for(var pageid in pages) {
-			selection.append("p").html(pages[pageid].extract);
-			break; // Only want one page
-		}
-		selection.append("a")
-		    .attr("href", link_url)
-		    .html("From " + (v.series == "tac" ? "Wikipedia" : "A Wiki of Ice and Fire"));
+		// First look for text in blurbs folder; if not found, use wiki
+		d3.text("blurbs/" + v.id, function(error, blurb) {
+			if(error == null) {
+				selection.append("p").text(blurb.trim());
+			}
+			else {
+
+				// No blurb found; pull text from wiki
+				
+				/* Assume v.wiki_handle is a correctly encoded URL if defined,
+				 * e.g. %20 instead of ' '.
+				 */
+				var wiki_handle = v.wiki_handle;
+				if(wiki_handle == undefined)
+					wiki_handle = encodeURI(v.name);
+
+				var domain = null;
+				var link_url = "http://";
+				if(v.series == "tac") {
+					domain = "en%2Ewikipedia%2Eorg%2Fw";
+					link_url += "en.wikipedia.org/wiki/";
+				}
+				else {
+					domain = "awoiaf%2Ewesteros%2Eorg";
+					link_url += "awoiaf.westeros.org/index.php/";
+				}
+				link_url += wiki_handle;
+
+				url = "wikis.php?domain=" + domain + "&handle=" + wiki_handle;
+				var req = new XMLHttpRequest();
+				req.open("GET", url, true);
+
+				req.onload = function() {
+					var pages = JSON.parse(this.response).query.pages;
+					for(var pageid in pages) {
+						selection.append("p").html(pages[pageid].extract);
+						break; // Only want one page
+					}
+					selection.append("a")
+						.attr("href", link_url)
+					    .html("From " + (v.series == "tac" ? "Wikipedia" : "A Wiki of Ice and Fire"));
+				};
+				
+				req.onerror = function() {
+					console.log("Error opening " + url);
+				};
+
+				req.send();
+			}
+		});
+
 	};
-	
-	req.onerror = function() {
-		console.log("Error opening " + url);
-	};
 
-	req.send();
+	// Check for image file first
+	var img_url = "pics/" + v.id + ".jpg";
+	var img_req = new XMLHttpRequest();
+	img_req.open("HEAD", img_url, true);
+	img_req.onload = function() {
+        if(this.status == 200 || this.status == 0) // File exists; add the image
+		    selection.append("img")
+		        .attr("src", img_url);
+		addText();
+	};
+	img_req.onerror = addText;
+
+	img_req.send();
 }
 
 function edgeClicked(e) {
@@ -168,6 +201,9 @@ vertices.append("text")
 	.text(function(v) {return v.name;})
 	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
 	.attr("y", 4);
+
+console.log(vertices);
+console.log(canvas.style("height"));
 
 // Draw edges
 
