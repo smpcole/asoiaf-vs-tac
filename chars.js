@@ -43,6 +43,7 @@ var asoiaf_chars = [
 	["Baelor I Targaryen", "baelor"],
 	["Daenerys Targaryen", "daenerys"],
 	["Viserys Targaryen", "viserys"],
+	["Samwell Tarly", "sam"],
 	["Brienne of Tarth", "brienne"],
 	["Loras Tyrell", "loras"],
 	["Margaery Tyrell", "margaery"],
