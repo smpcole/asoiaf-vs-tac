@@ -14,6 +14,7 @@ body > div {
 
 #graphic, #side-panel {
     border-style: solid;
+	border-color: darkblue;
     float: left;
     overflow-y: scroll;
     background-image: url("concrete_seamless.png");
@@ -62,6 +63,7 @@ h1 {
 .vertex circle {
     cx: 0;
     cy: 0;
+	fill: darkblue;
 }
 
 .vertex * {
@@ -81,7 +83,7 @@ h1 {
 }
 
 line.edge {
-    stroke: black;
+    stroke: darkslateblue;
     opacity: .25;
     stroke-width: 2px;
     pointer-events: none;
@@ -98,6 +100,6 @@ line.edge.active:hover {
 }
 
 line.edge.active.selected {
-    stroke: blue;
+    stroke: darkblue;
     stroke-width: 4px;
 }
