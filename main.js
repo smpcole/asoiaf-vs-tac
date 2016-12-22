@@ -232,3 +232,31 @@ req.onload = function() {
 	}
 };
 req.send();
+
+function aboutAuthors() {
+	var grrm = {
+		name: "George R. R. Martin",
+		id: "grrm",
+		series: "asoiaf"
+	};
+
+	var md = {
+		name: "Maurice Druon",
+		id: "md",
+		series: "tac"
+	};
+
+	var e = {
+		tac: md.name,
+		asoiaf: grrm.name
+	};
+
+	// Clear the side panel
+	sidePanel.select("#instructions").remove();
+	sidePanel.selectAll("div").html("");
+
+	showInfo(grrm, sidePanel.select("#selected-char"));
+	showInfo(md, sidePanel.select("#connected-char"));
+	showConnections(e);
+	
+};
