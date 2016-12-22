@@ -156,6 +156,10 @@ function edgeClicked(e) {
 	otherV = canvas.select("#" + otherV).datum(); // Vertex object
 
 	showInfo(otherV, sidePanel.select("#connected-char"));
+	showConnections(e);
+}
+
+function showConnections(e) {
 
 	// Show connections between characters in a bulleted list
 	var connections = d3.select("#connections").html("");
@@ -174,7 +178,7 @@ function edgeClicked(e) {
 			}
 			else
 				console.log(error);
-		});
+	});
 
 }
 
