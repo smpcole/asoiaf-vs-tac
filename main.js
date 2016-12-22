@@ -46,7 +46,7 @@ function vertexClicked(v) {
 
 	// Show edges incident to the clicked vertex
 	edges.classed("active", function(e) {
-			return e.l == v.id || e.r == v.id;
+			return e.tac == v.id || e.asoiaf == v.id;
 		})
 		.classed("selected", false);
 
@@ -54,7 +54,7 @@ function vertexClicked(v) {
 	canvas.selectAll(".edge.active")
 	  .append("title")
         .html(function(e) {
-			var otherV = (v.series == "tac" ? e.r : e.l); // ID
+			var otherV = (v.series == "tac" ? e.asoiaf : e.tac); // ID
 			console.log(otherV);
 			return canvas.select("#" + otherV).datum().name;
 		});
@@ -148,11 +148,11 @@ function edgeClicked(e) {
 	
 	// Deselect other edges and select this one
 	edges.classed("selected", function(f) {
-			return f.l == e.l && f.r == e.r;
+			return f.tac == e.tac && f.asoiaf == e.asoiaf;
 		});
 
 	// Get the endpoint of e that is NOT the selected vertex
-	var otherV = (canvas.select(".vertex.selected").classed("tac") ? e.r : e.l); // ID
+	var otherV = (canvas.select(".vertex.selected").classed("tac") ? e.asoiaf : e.tac); // ID
 	otherV = canvas.select("#" + otherV).datum(); // Vertex object
 
 	showInfo(otherV, sidePanel.select("#connected-char"));
@@ -162,7 +162,7 @@ function edgeClicked(e) {
 	connections.append("h2")
 		.html("Connections");
 	var ul = connections.append("ul");
-	d3.text("blurbs/" + e.l + "-" + e.r, function(error, blurb) {
+	d3.text("blurbs/" + e.tac + "-" + e.asoiaf, function(error, blurb) {
 			if(error == null) {
 				blurb = blurb.split("\n"); // Each newline marks a new bullet
 				for(var i = 0; i < blurb.length; i++) {
@@ -218,9 +218,9 @@ req.onload = function() {
 		edges = edges.data(edgeList)
 		  .enter().append("line")
 			.attr("x1", vertexPos("clemence").x) // Use any TAC character
-			.attr("y1", function(e) {return vertexPos(e.l).y;})
+			.attr("y1", function(e) {return vertexPos(e.tac).y;})
 			.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
-			.attr("y2", function(e) {return vertexPos(e.r).y;})
+			.attr("y2", function(e) {return vertexPos(e.asoiaf).y;})
 			.on("click", edgeClicked)
 			.classed("edge", true);
 
