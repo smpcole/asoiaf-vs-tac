@@ -72,11 +72,11 @@ h1 {
 }
 
 .vertex.tac text {
-    text-anchor: end;
+    text-anchor: start;
 }
 
 .vertex.asoiaf text {
-    text-anchor: start;
+    text-anchor: end;
 }
 
 .vertex.selected text {

@@ -28,7 +28,7 @@ function vertexPos(v) {
 		v = canvas.select("#" + v).datum();
 
 	var pos = {
-		x: (v.series == "tac" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH) + VTX_TRANS.x, 
+		x: (v.series == "asoiaf" ? LABEL_WIDTH : WIDTH - LABEL_WIDTH) + VTX_TRANS.x, 
 		y: v.index * VTX_DIST + VTX_TRANS.y
 	};
 	return pos;
@@ -199,7 +199,7 @@ vertices.append("circle")
 
 vertices.append("text")
 	.text(function(v) {return v.name;})
-	.attr("x", function(v) {return v.series == "tac" ? -LABEL_OFFSET : LABEL_OFFSET;})
+	.attr("x", function(v) {return v.series == "asoiaf" ? -LABEL_OFFSET : LABEL_OFFSET;})
 	.attr("y", 4);
 
 console.log(vertices);
