@@ -64,7 +64,6 @@ h1 {
 .vertex circle {
     cx: 0;
     cy: 0;
-	fill: darkblue;
 }
 
 .vertex * {
@@ -83,8 +82,12 @@ h1 {
     font-weight: bold;
 }
 
+.vertex.selected * {
+	fill: darkblue;
+}
+
 line.edge {
-    stroke: darkslateblue;
+    stroke: black;
     opacity: .25;
     stroke-width: 2px;
     pointer-events: none;
@@ -94,6 +97,7 @@ line.edge.active {
     opacity: 1;
     pointer-events: auto;
     cursor: pointer;
+	stroke: darkslateblue;
 }
 
 line.edge.active:hover {
