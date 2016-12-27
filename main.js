@@ -247,8 +247,8 @@ function aboutAuthors() {
 	};
 
 	var e = {
-		tac: md.name,
-		asoiaf: grrm.name
+		tac: md.id,
+		asoiaf: grrm.id
 	};
 
 	// Clear the side panel
