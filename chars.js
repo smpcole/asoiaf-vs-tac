@@ -28,6 +28,7 @@ var asoiaf_chars = [
 	["Tyrion Lannister", "tyrion"],
 	["Tywin Lannister", "tywin"],
 	["Melisandre", "melisandre"],
+	["Jorah Mormont", "jorah"],
 	["Daario Naharis", "daario"],
 	["Ilyn Payne", "ilyn"],
 	["Mance Rayder's son", "mancesson", "Aemon_Steelsong"],
