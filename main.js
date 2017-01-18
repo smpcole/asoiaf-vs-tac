@@ -81,7 +81,7 @@ function showInfo(v, selection) {
 		// First look for text in blurbs folder; if not found, use wiki
 		d3.text("blurbs/" + v.id, function(error, blurb) {
 			if(error == null) {
-				selection.append("p").text(blurb.trim());
+				selection.append("p").html(blurb.trim());
 			}
 			else {
 
