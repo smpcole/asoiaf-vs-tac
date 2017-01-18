@@ -34,6 +34,10 @@ function vertexPos(v) {
 	return pos;
 }
 
+sidePanel.clear = function() {
+	this.selectAll("div").html("");
+}
+
 // Callback for when a vertex is clicked
 function vertexClicked(v) {
 
@@ -59,9 +63,8 @@ function vertexClicked(v) {
 			return canvas.select("#" + otherV).datum().name;
 		});
 
-	// Clear the side panel
-	sidePanel.selectAll("div").html("");
-
+	sidePanel.clear();
+	
 	showInfo(v, sidePanel.select("#selected-char"));
 }
 
@@ -250,9 +253,8 @@ function aboutAuthors() {
 		asoiaf: grrm.id
 	};
 
-	// Clear the side panel
-	sidePanel.selectAll("div").html("");
-
+	sidePanel.clear();
+	
 	showInfo(grrm, sidePanel.select("#selected-char"));
 	showInfo(md, sidePanel.select("#connected-char"));
 	showConnections(e);
@@ -261,9 +263,8 @@ function aboutAuthors() {
 
 function acknowledgements() {
 	
-	// Clear the side panel
-	sidePanel.selectAll("div").html("");
-
+	sidePanel.clear();
+	
 	d3.text("acknowledgements.html", function(error, html) {
 		if(error == null) {
 			sidePanel.select("#selected-char")
