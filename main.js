@@ -261,6 +261,17 @@ function aboutAuthors() {
 	
 };
 
+function aboutSam() {
+	sidePanel.clear();
+
+	var sam = {
+		name: "Hello!",
+		id: "samc"
+	};
+
+	showInfo(sam, sidePanel.select("#selected-char"));
+};
+
 function acknowledgements() {
 	
 	sidePanel.clear();
