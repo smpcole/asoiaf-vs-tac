@@ -60,7 +60,6 @@ function vertexClicked(v) {
 		});
 
 	// Clear the side panel
-	sidePanel.select("#instructions").remove();
 	sidePanel.selectAll("div").html("");
 
 	showInfo(v, sidePanel.select("#selected-char"));
@@ -252,7 +251,6 @@ function aboutAuthors() {
 	};
 
 	// Clear the side panel
-	sidePanel.select("#instructions").remove();
 	sidePanel.selectAll("div").html("");
 
 	showInfo(grrm, sidePanel.select("#selected-char"));
@@ -264,7 +262,6 @@ function aboutAuthors() {
 function acknowledgements() {
 	
 	// Clear the side panel
-	sidePanel.select("#instructions").remove();
 	sidePanel.selectAll("div").html("");
 
 	d3.text("acknowledgements.html", function(error, html) {
