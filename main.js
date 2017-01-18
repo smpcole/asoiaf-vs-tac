@@ -260,3 +260,19 @@ function aboutAuthors() {
 	showConnections(e);
 	
 };
+
+function acknowledgements() {
+	
+	// Clear the side panel
+	sidePanel.select("#instructions").remove();
+	sidePanel.selectAll("div").html("");
+
+	d3.text("acknowledgements.html", function(error, html) {
+		if(error == null) {
+			sidePanel.select("#selected-char")
+			    .html(html);
+		}
+		else
+			console.log(error);
+	});
+};
