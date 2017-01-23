@@ -27,6 +27,7 @@ var asoiaf_chars = [
 	["Jaime Lannister", "jaime"],
 	["Tyrion Lannister", "tyrion"],
 	["Tywin Lannister", "tywin"],
+	["Quentyn Martell", "quentyn"],
 	["Melisandre", "melisandre"],
 	["Jorah Mormont", "jorah"],
 	["Daario Naharis", "daario"],
