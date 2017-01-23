@@ -12,6 +12,15 @@ body > div {
     overflow-x: scroll;
 }
 
+form > input[type="text"], form > textarea {
+	width: 600px;
+}
+
+form > textarea {
+	resize: none;
+	height: 150px;
+}
+
 #graphic, #side-panel {
     border-style: solid;
 	border-color: darkblue;
