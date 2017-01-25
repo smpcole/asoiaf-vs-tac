@@ -27,7 +27,7 @@ if(isset($_POST["submit"])) {
 
     $msg = compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link);
 
-    $header = "From: maester@theoriginalgot.com\r\n" . 
+    $header = "From: The Original GOT <maester@theoriginalgot.com>\r\n" . 
     "Reply-To: smpcole@gmail.com\r\n" . 
     "Cc: smpcole@gmail.com\r\n" .
     "Content-type: text/html; charset=UTF-8";
