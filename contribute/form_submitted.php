@@ -5,25 +5,25 @@ $asoiaf = $tac = $connections = $name = $email = $citeas = $link = $response = "
 if(isset($_POST["submit"])) {
 	// TODO: protect against multiple submission
 
+	$asoiaf = get_input("asoiaf");
+    $tac = get_input("tac");
+    $connections = get_input("connections");
+    $name = get_input("name");
+   	$email = get_input("email");
+    $citeas = get_input("citeas");
+    $link = get_input("link");
+
 	// Check for empty connections
-	$connections = get_input("connections");
 	if(empty($connections)) {
 		$response = error("Please write something in the \"connections\" box.");
 		return;
 	}
 
 	// Validate email address
-	$email = get_input("email");
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$response = error("Please enter a valid email address.");
 		return;
     }
-
-    $asoiaf = get_input("asoiaf");
-    $tac = get_input("tac");
-    $name = get_input("name");
-    $citeas = get_input("citeas");
-    $link = get_input("link");
 
     $msg = compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link);
 
