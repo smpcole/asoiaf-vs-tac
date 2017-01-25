@@ -34,7 +34,7 @@
 	Link to your website (optional)?<br>
 	<input type="text" name="link" maxlength="50" placeholder="http://example.com"><br>
 	<br>
-	<input type="submit">
+	<input type="submit" name="submit">
   </form>
   
   <h2>General questions/comments?</h2>
