@@ -8,14 +8,14 @@ if(isset($_POST["submit"])) {
 	// Check for empty connections
 	$connections = get_input("connections");
 	if(empty($connections)) {
-		error("Please write something in the \"connections\" box.");
+		$response = error("Please write something in the \"connections\" box.");
 		return;
 	}
 
 	// Validate email address
 	$email = get_input("email");
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		error("Please enter a valid email address.");
+		$response = error("Please enter a valid email address.");
 		return;
     }
 
@@ -35,9 +35,9 @@ if(isset($_POST["submit"])) {
     $subject = "Your submission to The Original GOT";
 
     if(mail($email, $subject, $msg, $header))
-    	echo "Thanks!  I'll get back to you ASAP.";
+    	$response = "Thanks!  I'll get back to you ASAP.";
     else
-    	error("Uh oh!  Your submission could not be delivered for some reason.");
+    	$response = error("Uh oh!  Your submission could not be delivered for some reason.");
 }
 
 function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link) {
@@ -62,7 +62,7 @@ function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link)
 }
 
 function error($msg) {
-	echo "<font color=\"red\">" . $msg . "</font>";
+	return "<font color=\"red\">" . $msg . "</font>";
 }
 
 function get_input($name) {
