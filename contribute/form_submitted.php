@@ -16,6 +16,12 @@ if(isset($_POST["submit"])) {
 		error("Please enter a valid email address.");
 		return;
     }
+
+    $asoiaf = get_input("asoiaf");
+    $tac = get_input("tac");
+    $name = get_input("name");
+    $citeas = get_input("citeas");
+    $link = get_input("link");
 }
 
 function error($msg) {
