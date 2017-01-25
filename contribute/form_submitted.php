@@ -9,6 +9,13 @@ if(isset($_POST["submit"])) {
 		error("Please write something in the \"connections\" box.");
 		return;
 	}
+
+	// Validate email address
+	$email = get_input("email");
+	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		error("Please enter a valid email address.");
+		return;
+    }
 }
 
 function error($msg) {
