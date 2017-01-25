@@ -32,7 +32,7 @@
 	<input type="text" name="citeas" maxlength="50" placeholder="Ex: Robert Baratheon, Robert, RobbyB, rbarath2@westeros.org, etc.  Keep it short."><br>
 	<br>
 	Link to your website (optional)?<br>
-	<input type="text" name="link" maxlength="50" placeholder="http://example.com"><br>
+	<input type="text" name="link" maxlength="50" placeholder="Ex: http://robertbaratheon.com, http://facebook.com/robbyb, http://github.com/rbaratheon, etc."><br>
 	<br>
 	<input type="submit" name="submit">
   </form>
