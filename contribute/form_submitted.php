@@ -34,8 +34,11 @@ if(isset($_POST["submit"])) {
 
     $subject = "Your submission to The Original GOT";
 
-    if(mail($email, $subject, $msg, $header))
+    if(mail($email, $subject, $msg, $header)) {
     	$response = "Thanks!  I'll get back to you ASAP.";
+    	// Clear form since the submit was successful
+    	$asoiaf = $tac = $connections = $name = $email = $citeas = $link = "";
+    }
     else
     	$response = error("Uh oh!  Your submission could not be delivered for some reason.");
 }
