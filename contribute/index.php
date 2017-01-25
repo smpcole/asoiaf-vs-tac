@@ -43,7 +43,7 @@
   
   <ul>
     <li>Email me any questions, comments, suggestions, death threats, etc. at <a href="mailto:smpcole@gmail.com">smpcole@gmail.com</a></li>
-    <li>Make a pull request on  <a href="https://github.com/smpcole/asoiaf-vs-tac">GitHub</a></li>
+    <li>Make a pull request on  <a href="https://github.com/smpcole/asoiaf-vs-tac" target="_blank">GitHub</a></li>
     <!-- TODO: donate link here -->
   <ul>
   
