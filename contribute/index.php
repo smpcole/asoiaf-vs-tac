@@ -12,6 +12,8 @@
 
   <h2>Have an idea for a connnection?</h2>
 
+  <?php include_once "form_submitted.php" ?>
+
   <form method="post">
 	<i>A Song of Ice and Fire</i> character:<br>
 	<input type="text" name="asoiaf" maxlength="50"><br>
@@ -37,7 +39,7 @@
 	<input type="submit" name="submit">
   </form>
 
-  <?php include_once "form_submitted.php" ?>
+  <?php echo $response; ?>
   
   <h2>Other ways to contribute</h2>
   
