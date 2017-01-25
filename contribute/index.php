@@ -16,25 +16,25 @@
 
   <form method="post">
 	<i>A Song of Ice and Fire</i> character:<br>
-	<input type="text" name="asoiaf" maxlength="50"><br>
+	<input type="text" name="asoiaf" maxlength="50" value="<?php echo $asoiaf; ?>"><br>
 	<br>
 	<i>The Accursed Kings</i> character:<br>
-	<input type="text" name="tac" maxlength="50"><br>
+	<input type="text" name="tac" maxlength="50" value="<?php echo $tac; ?>"><br>
 	<br>
 	Connections:<br>
-	<textarea maxlength="250" name="connections"></textarea><br>
+	<textarea maxlength="250" name="connections"><?php echo $connections; ?></textarea><br>
 	<br>
 	Your name:<br>
-	<input type="text" name="name" maxlength="50"><br>
+	<input type="text" name="name" maxlength="50" value="<?php echo $name; ?>"><br>
 	<br>
 	Email:<br>
-	<input type="text" name="email" maxlength="50"><br>
+	<input type="text" name="email" maxlength="50" value="<?php echo $email; ?>"><br>
 	<br>
 	How would you like to be cited (optional)?<br>
-	<input type="text" name="citeas" maxlength="50" placeholder="Ex: Robert Baratheon, Robert, RobbyB, rbarath2@westeros.org, etc.  Keep it short."><br>
+	<input type="text" name="citeas" maxlength="50" placeholder="Ex: Robert Baratheon, Robert, RobbyB, rbarath2@westeros.org, etc.  Keep it short." value="<?php echo $citeas; ?>"><br>
 	<br>
 	Link to your website (optional)?<br>
-	<input type="text" name="link" maxlength="50" placeholder="Ex: http://robertbaratheon.com, http://facebook.com/robbyb, http://github.com/rbaratheon, etc."><br>
+	<input type="text" name="link" maxlength="50" placeholder="Ex: http://robertbaratheon.com, http://facebook.com/robbyb, http://github.com/rbaratheon, etc." value="<?php echo $link; ?>"><br>
 	<br>
 	<input type="submit" name="submit">
   </form>
