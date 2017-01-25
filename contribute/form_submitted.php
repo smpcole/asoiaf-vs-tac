@@ -1,5 +1,7 @@
 <?php
 
+$asoiaf = $tac = $connections = $name = $email = $citeas = $link = $response = "";
+
 if(isset($_POST["submit"])) {
 	// TODO: protect against multiple submission
 
