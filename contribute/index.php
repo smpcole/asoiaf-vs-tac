@@ -36,6 +36,8 @@
 	<br>
 	<input type="submit" name="submit">
   </form>
+
+  <?php include_once "form_submitted.php" ?>
   
   <h2>General questions/comments?</h2>
 
