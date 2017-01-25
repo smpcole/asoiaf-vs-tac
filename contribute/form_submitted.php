@@ -29,6 +29,13 @@ if(isset($_POST["submit"])) {
     "Reply-To: smpcole@gmail.com\r\n" . 
     "Cc: smpcole@gmail.com\r\n" .
     "Content-type: text/html; charset=UTF-8";
+
+    $subject = "Your submission to The Original GOT";
+
+    if(mail($email, $subject, $msg, $header))
+    	echo "Thanks!  I'll get back to you ASAP.";
+    else
+    	error("Uh oh!  Your submission could not be delivered for some reason.");
 }
 
 function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link) {
