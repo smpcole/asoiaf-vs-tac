@@ -39,11 +39,13 @@
 
   <?php include_once "form_submitted.php" ?>
   
-  <h2>General questions/comments?</h2>
-
-  <!-- TODO: add form -->
-
-  Also feel free to email me (<a href="mailto:smpcole@gmail.com">smpcole@gmail.com</a>) or make a pull request on  <a href="https://github.com/smpcole/asoiaf-vs-tac">GitHub</a>.
+  <h2>Other ways to contribute</h2>
+  
+  <ul>
+    <li>Email me any questions, comments, suggestions, death threats, etc. at <a href="mailto:smpcole@gmail.com">smpcole@gmail.com</a></li>
+    <li>Make a pull request on  <a href="https://github.com/smpcole/asoiaf-vs-tac">GitHub</a></li>
+    <!-- TODO: donate link here -->
+  <ul>
   
 </body>
 
