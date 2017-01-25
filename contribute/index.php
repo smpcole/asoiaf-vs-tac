@@ -20,7 +20,7 @@
 	<input type="text" name="tac" maxlength="50"><br>
 	<br>
 	Connections:<br>
-	<textarea maxlength="250"></textarea><br>
+	<textarea maxlength="250" name="connections"></textarea><br>
 	<br>
 	Your name:<br>
 	<input type="text" name="name" maxlength="50"><br>
