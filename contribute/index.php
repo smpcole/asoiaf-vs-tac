@@ -10,8 +10,6 @@
 <body>
   <h1>Contribute</h1>
 
-  <h2>Have an idea for a connnection?</h2>
-
   <?php include_once "form_submitted.php" ?>
 
   <form method="post">
