@@ -34,7 +34,7 @@
 	Link to your website (optional)?<br>
 	<input type="text" name="link" maxlength="50" placeholder="Ex: http://robertbaratheon.com, http://facebook.com/robbyb, http://github.com/rbaratheon, etc." value="<?php echo $link; ?>"><br>
 	<br>
-	<input type="submit" name="submit">
+	<input type="submit" name="submit" value="Submit">
   </form>
 
   <?php echo $response; ?>
