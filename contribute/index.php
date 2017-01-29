@@ -10,7 +10,7 @@
 <body>
   <h1>Contribute</h1>
 
-  <?php include_once "form_submitted.php" ?>
+  <?php include_once "form_submitted.php"; ?>
 
   <form method="post">
 	<i>A Song of Ice and Fire</i> character:<br>
