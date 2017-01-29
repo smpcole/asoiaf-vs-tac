@@ -64,7 +64,7 @@ function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link)
 }
 
 function error($msg) {
-	return "<font color=\"red\">" . $msg . "</font>";
+	return "<p><b><font color=\"red\">" . $msg . "</font></b></p>";
 }
 
 function get_input($name) {

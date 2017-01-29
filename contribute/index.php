@@ -12,6 +12,8 @@
 <body>
   <h1>Contribute</h1>
 
+  <?php echo $response; ?>
+
   <form method="post">
 	<i>A Song of Ice and Fire</i> character:<br>
 	<input type="text" name="asoiaf" maxlength="50" value="<?php echo $asoiaf; ?>"><br>
@@ -36,8 +38,6 @@
 	<br>
 	<input type="submit" name="submit" value="Submit">
   </form>
-
-  <?php echo $response; ?>
   
   <h2>Other ways to contribute</h2>
   
