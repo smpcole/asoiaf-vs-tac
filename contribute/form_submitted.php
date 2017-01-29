@@ -35,9 +35,8 @@ if(isset($_POST["submit"])) {
     $subject = "Your submission to The Original GOT";
 
     if(mail($email, $subject, $msg, $header)) {
-    	$response = "Thanks!  I'll get back to you ASAP.";
-    	// Clear form since the submit was successful
-    	$asoiaf = $tac = $connections = $name = $email = $citeas = $link = "";
+    	// Redirect to thank you page.  This protects against duplicate submission of form
+    	header("Location: thankyou.html");
     }
     else
     	$response = error("Uh oh!  Your submission could not be delivered for some reason.");
