@@ -45,7 +45,7 @@ if(isset($_POST["submit"])) {
 function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link) {
 	$msg = "<html><body>";
 
-	$msg .= "<p>Dear " . $name . ",</p><p>Thank you for contributing to The Original GOT!  I'll get back you as soon as I can.</p><p>See ya,</p><p>Sam</p><hr>";
+	$msg .= "<p>Dear " . $name . ",</p><p>Thank you for contributing to <a href=\"http://theoriginalgot.com\">The Original GOT</a>!  I'll get back you as soon as I can.</p><p>See ya,</p><p>Sam</p><hr>";
 
 	$msg .= "<b><i>A Song of Ice and Fire</i> character:</b> " . $asoiaf . "<br><br>";
 
