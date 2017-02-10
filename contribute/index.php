@@ -5,6 +5,8 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../styles.css">
+<link rel="icon" type="image/png" href="../favicon.png"/>
+
 
 <title>The Original GOT - Contribute</title>
 </head>
