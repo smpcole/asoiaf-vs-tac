@@ -6,6 +6,8 @@ touch blurbs.txt
 
 for f in `ls blurbs`; do
 	echo $f >> blurbs.txt
+	echo "----------------" >> blurbs.txt
 	cat blurbs/$f >> blurbs.txt
+	echo "" >> blurbs.txt
 	echo "" >> blurbs.txt
 done
