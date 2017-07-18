@@ -54,8 +54,8 @@ var asoiaf_chars = [
 	["Varys", "varys"]
 ];
 
-// List of TAC characters, their IDs, and their neighbors' IDs
-var tac_chars = [
+// List of TAK characters, their IDs, and their neighbors' IDs
+var tak_chars = [
 	["Allies", "allies"],
 	["Brothers d'Aunay", "aunays"],
 	["Beatrice d'Hirson", "beatrice"],
@@ -102,15 +102,15 @@ var tac_chars = [
  * Each vertex has the following fields:
  * - name: the character's full name
  * - id: character's unique ID string
- * - series: either "tac" or "asoiaf"
+ * - series: either "tak" or "asoiaf"
  * - index: the vertex's index in its respective list
  */
 var vertexList = [];
 
-/* Define "edge" object corresponding to each connection between a TAC character and an ASOIAF character
+/* Define "edge" object corresponding to each connection between a TAK character and an ASOIAF character
  *
  * Each edge has the following fields:
- * - l: the ID of the TAC character (left part of graph)
+ * - l: the ID of the TAK character (left part of graph)
  * - r: the ID of the ASOIAF character (right part of graph)
  */
 var edgeList = [];
@@ -122,7 +122,7 @@ while(true) {
 
 		var char_ID = l[i][1],
 			full_name = l[i][0],
-			series = (l == asoiaf_chars ? "asoiaf" : "tac");
+			series = (l == asoiaf_chars ? "asoiaf" : "tak");
 
 		var vertex = {
 			name: full_name,
@@ -142,7 +142,7 @@ while(true) {
 
 	// Update l to next list
 	if(l == asoiaf_chars)
-		l = tac_chars;
+		l = tak_chars;
 	else
 		break;
 }

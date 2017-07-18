@@ -21,7 +21,7 @@
 	<input type="text" name="asoiaf" maxlength="50" value="<?php echo $asoiaf; ?>"><br>
 	<br>
 	<i>The Accursed Kings</i> character:<br>
-	<input type="text" name="tac" maxlength="50" value="<?php echo $tac; ?>"><br>
+	<input type="text" name="tak" maxlength="50" value="<?php echo $tak; ?>"><br>
 	<br>
 	Connections:<br>
 	<textarea maxlength="250" name="connections"><?php echo $connections; ?></textarea><br>

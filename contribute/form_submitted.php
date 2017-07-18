@@ -1,12 +1,12 @@
 <?php
 
-$asoiaf = $tac = $connections = $name = $email = $citeas = $link = $response = "";
+$asoiaf = $tak = $connections = $name = $email = $citeas = $link = $response = "";
 
 if(isset($_POST["submit"])) {
 	// TODO: protect against multiple submission
 
 	$asoiaf = get_input("asoiaf");
-    $tac = get_input("tac");
+    $tak = get_input("tak");
     $connections = get_input("connections");
     $name = get_input("name");
    	$email = get_input("email");
@@ -25,7 +25,7 @@ if(isset($_POST["submit"])) {
 		return;
     }
 
-    $msg = compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link);
+    $msg = compose_msg($asoiaf, $tak, $connections, $name, $email, $citeas, $link);
 
     $header = "From: The Original GOT <maester@theoriginalgot.com>\r\n" . 
     "Reply-To: smpcole@gmail.com\r\n" . 
@@ -42,14 +42,14 @@ if(isset($_POST["submit"])) {
     	$response = error("Uh oh!  Your submission could not be delivered for some reason.");
 }
 
-function compose_msg($asoiaf, $tac, $connections, $name, $email, $citeas, $link) {
+function compose_msg($asoiaf, $tak, $connections, $name, $email, $citeas, $link) {
 	$msg = "<html><body>";
 
 	$msg .= "<p>Dear " . $name . ",</p><p>Thank you for contributing to <a href=\"http://theoriginalgot.com\">The Original GOT</a>!  I'll get back you as soon as I can.</p><p>See ya,</p><p>Sam</p><hr>";
 
 	$msg .= "<b><i>A Song of Ice and Fire</i> character:</b> " . $asoiaf . "<br><br>";
 
-	$msg .= "<b><i>The Accursed Kings</i> character:</b> " . $tac . "<br><br>";
+	$msg .= "<b><i>The Accursed Kings</i> character:</b> " . $tak . "<br><br>";
 
 	$connections = str_replace("\n", "</p><p>", $connections);
 	$msg .= "<b>Connections:</b><p>" . $connections . "</p>";

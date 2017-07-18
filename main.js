@@ -14,7 +14,7 @@ var WIDTH = canvas.style("width");
 WIDTH = +(WIDTH.substring(0, WIDTH.length - 2));
 
 // Set height based on the number of vertices
-var HEIGHT = VTX_DIST * Math.max(asoiaf_chars.length, tac_chars.length);
+var HEIGHT = VTX_DIST * Math.max(asoiaf_chars.length, tak_chars.length);
 canvas.style("height", HEIGHT);
 
 ////////////////// Helper functions //////////////////
@@ -50,7 +50,7 @@ function vertexClicked(v) {
 
 	// Show edges incident to the clicked vertex
 	edges.classed("active", function(e) {
-			return e.tac == v.id || e.asoiaf == v.id;
+			return e.tak == v.id || e.asoiaf == v.id;
 		})
 		.classed("selected", false);
 
@@ -58,7 +58,7 @@ function vertexClicked(v) {
 	canvas.selectAll(".edge.active")
 	  .append("title")
         .html(function(e) {
-			var otherV = (v.series == "tac" ? e.asoiaf : e.tac); // ID
+			var otherV = (v.series == "tak" ? e.asoiaf : e.tak); // ID
 			console.log(otherV);
 			return canvas.select("#" + otherV).datum().name;
 		});
@@ -96,7 +96,7 @@ function showInfo(v, selection) {
 
 				var domain = null;
 				var link_url = "http://";
-				if(v.series == "tac") {
+				if(v.series == "tak") {
 					domain = "en%2Ewikipedia%2Eorg%2Fw";
 					link_url += "en.wikipedia.org/wiki/";
 				}
@@ -118,7 +118,7 @@ function showInfo(v, selection) {
 					}
 					selection.append("a")
 						.attr("href", link_url)
-					    .html("From " + (v.series == "tac" ? "Wikipedia" : "A Wiki of Ice and Fire"));
+					    .html("From " + (v.series == "tak" ? "Wikipedia" : "A Wiki of Ice and Fire"));
 				};
 				
 				req.onerror = function() {
@@ -150,11 +150,11 @@ function edgeClicked(e) {
 	
 	// Deselect other edges and select this one
 	edges.classed("selected", function(f) {
-			return f.tac == e.tac && f.asoiaf == e.asoiaf;
+			return f.tak == e.tak && f.asoiaf == e.asoiaf;
 		});
 
 	// Get the endpoint of e that is NOT the selected vertex
-	var otherV = (canvas.select(".vertex.selected").classed("tac") ? e.asoiaf : e.tac); // ID
+	var otherV = (canvas.select(".vertex.selected").classed("tak") ? e.asoiaf : e.tak); // ID
 	otherV = canvas.select("#" + otherV).datum(); // Vertex object
 
 	showInfo(otherV, sidePanel.select("#connected-char"));
@@ -168,7 +168,7 @@ function showConnections(e) {
 	connections.append("h2")
 		.html("Connections");
 	var ul = connections.append("ul");
-	d3.text("blurbs/" + e.tac + "-" + e.asoiaf, function(error, blurb) {
+	d3.text("blurbs/" + e.tak + "-" + e.asoiaf, function(error, blurb) {
 			if(error == null) {
 				blurb = blurb.split("\n"); // Each newline marks a new bullet
 				for(var i = 0; i < blurb.length; i++) {
@@ -192,7 +192,7 @@ var vertices = canvas.selectAll(".vertex") // Should be empty
 	.data(vertexList)
   .enter().append("g")
 	.classed("vertex", true)
-	.classed("tac", function(v) {return v.series == "tac";})
+	.classed("tak", function(v) {return v.series == "tak";})
 	.classed("asoiaf", function(v) {return v.series == "asoiaf";})
 	.attr("id", function(v) {return v.id;})
 	.attr("transform", function(v) {
@@ -223,8 +223,8 @@ req.onload = function() {
 		edgeList = JSON.parse(this.response);
 		edges = edges.data(edgeList)
 		  .enter().append("line")
-			.attr("x1", vertexPos("clemence").x) // Use any TAC character
-			.attr("y1", function(e) {return vertexPos(e.tac).y;})
+			.attr("x1", vertexPos("clemence").x) // Use any TAK character
+			.attr("y1", function(e) {return vertexPos(e.tak).y;})
 			.attr("x2", vertexPos("sansa").x) // Use any ASOIAF character
 			.attr("y2", function(e) {return vertexPos(e.asoiaf).y;})
 			.on("click", edgeClicked)
@@ -245,11 +245,11 @@ function aboutAuthors() {
 	var md = {
 		name: "Maurice Druon",
 		id: "md",
-		series: "tac"
+		series: "tak"
 	};
 
 	var e = {
-		tac: md.id,
+		tak: md.id,
 		asoiaf: grrm.id
 	};
 

@@ -9,7 +9,7 @@ for($i = 0; $i < count($paths); $i++) {
     if($edge[0] == "md" || $edge[1] == "grrm")
         continue;
     
-    array_push($edgeList, array("tac" => $edge[0], "asoiaf" => $edge[1]));
+    array_push($edgeList, array("tak" => $edge[0], "asoiaf" => $edge[1]));
 }
 echo json_encode($edgeList);
 chdir("..");
