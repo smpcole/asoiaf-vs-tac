@@ -45,7 +45,7 @@
   
   <ul>
     <li>Email me any questions, comments, suggestions, death threats, etc. at <a href="mailto:smpcole@gmail.com">smpcole@gmail.com</a></li>
-    <li>Make a pull request on  <a href="https://github.com/smpcole/asoiaf-vs-tac" target="_blank">GitHub</a></li>
+    <li>Make a pull request on  <a href="https://github.com/smpcole/theoriginalgot" target="_blank">GitHub</a></li>
     <li>
 	    <!-- PayPal donate button -->
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
