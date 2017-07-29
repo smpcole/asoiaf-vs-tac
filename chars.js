@@ -66,7 +66,7 @@ var tak_chars = [
 	["Hugh Despenser the Younger", "despenser"],
 	["Edward II of England", "edward2"],
 	["Edward III of England", "edward3"],
-	["Gaucher V de Chatillon", "gaucher"],
+	["Gaucher de Chatillon", "gaucher", "Gaucher_V_de_Chatillon"],
 	["Guccio Baglioni", "guccio"],
 	["Isabella of France", "isabella"],
 	["Jean I of France", "jean1"],
@@ -89,7 +89,7 @@ var tak_chars = [
 	["Philippa of Hainaut", "philippa"],
 	["Philippe V of France", "philippe5"],
 	["Cola di Rienzi", "rienzi"],
-	["Robert III of Artois", "robertofartois"],
+	["Robert of Artois", "robertofartois", "Robert_III_of_Artois"],
 	["Spinello Tolomei", "tolomei"],
 	["Charles of Valois", "valois"],
 	["William I of England", "william"]
