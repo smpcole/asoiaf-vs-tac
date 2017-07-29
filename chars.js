@@ -25,6 +25,7 @@ var asoiaf_chars = [
 	["Kettleblacks", "kettleblacks"],
 	["Cersei Lannister", "cersei"],
 	["Jaime Lannister", "jaime"],
+	["Kevan Lannister", "kevan"],
 	["Tyrion Lannister", "tyrion"],
 	["Tywin Lannister", "tywin"],
 	["Quentyn Martell", "quentyn"],
@@ -74,6 +75,7 @@ var tak_chars = [
 	["Pope John XXII", "john22"],
 	["Knights Templar", "templars"],
 	["Lormet", "lormet"],
+	["Louis d'Evreux", "louisdevreux", "Louis,_Count_of_Evreux"],
 	["Louis IX of France", "louis9"],
 	["Louis X of France", "louis10"],
 	["Louis X's illegitimate daughter", "louisdaughter"], // TODO: what's her name?
