@@ -33,7 +33,7 @@
 	<input type="text" name="email" maxlength="50" value="<?php echo $email; ?>"><br>
 	<br>
 	How would you like to be cited (optional)?<br>
-	<input type="text" name="citeas" maxlength="50" placeholder="Ex: Robert Baratheon, Robert, RobbyB, rbarath2@westeros.org, etc.  Keep it short." value="<?php echo $citeas; ?>"><br>
+	<input type="text" name="citeas" maxlength="50" placeholder="Ex: Robert Baratheon, Robert, RobbyB, rbarath1@westeros.org, etc.  Keep it short." value="<?php echo $citeas; ?>"><br>
 	<br>
 	Link to your website (optional)?<br>
 	<input type="text" name="link" maxlength="50" placeholder="Ex: http://robertbaratheon.com, http://facebook.com/robbyb, http://github.com/rbaratheon, etc." value="<?php echo $link; ?>"><br>
